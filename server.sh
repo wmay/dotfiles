@@ -1,6 +1,7 @@
 #!/bin/bash
 # Set up an Ubuntu server
-# run with 'sudo sh server.sh'
+# run with 'bash server.sh'
+# don't use sudo!!
 
 
 # make sure package info is up to date

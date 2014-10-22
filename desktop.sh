@@ -1,11 +1,12 @@
 #!/bin/bash
 # Set up an Ubuntu, or Ubuntu derivative, desktop
+# run with `bash desktop.sh`
+# don't use sudo!!
 
 
 # Install server things first, then do the rest in addition
-# bash server.sh
-# This is my server setup script. Get it from [place], or comment it
-# out if you don't want a Ruby on Rails server
+bash server.sh
+# Or comment it out if you don't want a Ruby on Rails server
 
 
 # -- SSD things --
