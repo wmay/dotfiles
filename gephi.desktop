@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Gephi
+Comment=Network analysis
+Exec=/home/will/.programs/gephi/bin/gephi
+Icon=/home/will/.programs/gephi/logo80.jpeg
+Terminal=false
+Type=Application
+Categories=Math;Science;Education
