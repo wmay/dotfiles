@@ -1,6 +1,6 @@
 #!/bin/bash
 # Set up an Ubuntu server
-# run with 'bash server.sh'
+# run with `bash server.sh`
 # don't use sudo!!
 
 
@@ -14,7 +14,6 @@ sudo apt-get -y upgrade
 program_list=( git
 
     curl
-
     libcurl4-openssl-dev
 
     # needed for unattended upgrades
@@ -30,6 +29,9 @@ sudo apt-get -y install ${program_list[*]}
 
 # -- RVM, Ruby, and Rails --
 # do NOT run this with sudo!!
+
+# get the gpg key first
+gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
 \curl -sSL https://get.rvm.io | bash -s stable --rails
 
 # set RVM/Ruby/Rails environment variables for current shell
@@ -50,17 +52,17 @@ gem install passenger
 rvmsudo passenger-install-nginx-module
 
 # move Nginx commands to the right folder, and make executable
-sudo cp nginx /etc/init.d/nginx
-sudo chmod +x /etc/init.d/nginx
+# sudo cp nginx /etc/init.d/nginx
+# sudo chmod +x /etc/init.d/nginx
 
 
-# -- configure Nginx --
+# # -- configure Nginx --
 
-# replace original nginx.conf with pre-made file
-sudo cp nginx.conf /opt/nginx/conf/nginx.conf
+# # replace original nginx.conf with pre-made file
+# sudo cp nginx.conf /opt/nginx/conf/nginx.conf
 
-# restart Nginx with new configuration
-sudo /etc/init.d/nginx restart
+# # restart Nginx with new configuration
+# sudo /etc/init.d/nginx restart
 
 
 # -- unattended upgrades --

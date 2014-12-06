@@ -18,34 +18,40 @@ bash server.sh
 # "name=`lsb_release -c -s`" doesn't get the Ubuntu name in Linux Mint!
 # see http://forums.linuxmint.com/viewtopic.php?f=18&t=127743
 # Better version:
-name=`grep "VERSION=" /etc/os-release | awk '{print $(NF-1)}' | tr [:upper:] [:lower:]`
+name=`grep "VERSION=" /etc/os-release | awk '{print $(NF-1)}' | tr [:upper:] [:lower:] | tr -d '('`
 
 
 # -- REPOS --
 
+# enable the Canonical partners repository
+sudo sed -i "/^# deb .*partner/ s/^# //" /etc/apt/sources.list
+
+# add Google Chrome repository
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+
+# get other helpful repositories
 repository_list=( ppa:saiarcot895/myppa
     # for apt-fast
     
     # launchpad-getkeys, for fixing repo GPG keys
     ppa:nilarimogard/webupd8
 
-    # Sun Java, for Gephi etc.
+    # Sun Java, for Java dev and Gephi
     ppa:webupd8team/java
 
     # R CRAN
     "deb http://cran.rstudio.com/bin/linux/ubuntu $name/"
 
     # Dynare
-    "deb http://www.dynare.org/ubuntu $name main contrib"
+    # no utopic repo at the moment
+    # "deb http://www.dynare.org/ubuntu $name main contrib"
+
+    # Emergent - no utopic repo yet
+    "deb http://grey.colorado.edu/ubuntu trusty main"
 
     # QGIS
     "deb http://qgis.org/debian $name main"
-
-    # f.lux - not using anymore due to issues on Ubuntu
-    # ppa:kilian/f.lux
-
-    # pipelight (for Netflix on Firefox)
-    ppa:pipelight/stable
 
     # SimpleScreenRecorder
     ppa:maarten-baert/simplescreenrecorder
@@ -54,8 +60,6 @@ repository_list=( ppa:saiarcot895/myppa
     ppa:gottcode/gcppa
     
 )
-
-
 
 # adding the repositories
 arraylength=${#array[@]}
@@ -89,28 +93,38 @@ program_list=( emacs
     r-base
     r-base-dev
 
+    # Google Chrome. Because Netflix.
+    google-chrome-stable
+
     # Maxima computer algebra system (Maple alternative)
     maxima
-    wxmaxima # nice interface
+    # wxmaxima # nice interface
+    maxima-emacs # nice emacs interface
 
     # Octave (MATLAB alternative)
     octave
     dynare # macroeconomic modeling add-on
 
+    # emergent, cognitive science modelling
+    emergent
+
     # QGIS
     qgis
     python-qgis
 
+    # nice writing app
     focuswriter
+    
+    # punchclock
+    kapow
 
     # for Java dev and Gephi
     oracle-java8-installer
 
-    # for Netflix in Firefox
-    pipelight-multi
+    # good package manager
+    synaptic
 
-    # using redshift instead
-    # fluxgui
+    # tint screen at night
     redshift-gtk
 
     # need for taskwarrior conky!
@@ -126,14 +140,18 @@ program_list=( emacs
     # cool hard drive visualizer
     gdmap
 
+    # flash and mp3 etc.
+    # lubuntu-restricted-extras
+    unity-tweak-tool
+    gnome-tweak-tool
+
     # for GeoDa
     freeglut3
     libcurl4-gnutls-dev
     libssl0.9.8
-
-    # flash and mp3 etc.
-    ubuntu-restricted-extras
-
+    
+    # for R package, and probably other things
+    libxml2-dev
 )
 
 
@@ -144,9 +162,12 @@ sudo apt-fast -y install ${program_list[*]}
 sudo apt-get -y install -f
 
 
-# -- configure pipelight --
-sudo pipelight-plugin --update
-pipelight-plugin --enable silverlight
+# install some R packages
+sudo Rscript packages.R
+
+
+# some Ruby gems
+gem install mechanize
 
 
 # GeoDa
@@ -160,6 +181,10 @@ rm geoda.deb
 
 # Gephi
 
+# make a nice-looking desktop icon
+cp gephi.desktop ~/.local/share/applications/
+chmod +777 ~/.local/share/applications/gephi.desktop
+
 # add a hidden file to store misc. programs
 mkdir ~/.programs
 cd ~/.programs
@@ -169,9 +194,6 @@ cd ~/.programs
 curl -L "http://nexus.gephi.org/nexus/service/local/artifact/maven/content?r=snapshots&g=org.gephi&a=gephi&v=0.9-SNAPSHOT&p=zip" -o gephi-0.9-SNAPSHOT.zip
 unzip gephi-0.9-SNAPSHOT.zip # unzip
 rm gephi-0.9-SNAPSHOT.zip
-alias gephi="/home/will/.programs/gephi/bin/gephi"
 # download the logo, put it in the gephi folder
 cd gephi
 wget http://gephi.github.io/images/badge/logo80.jpeg
-cd ..
-cd ..
