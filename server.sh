@@ -16,10 +16,12 @@ program_list=( git
     curl
     libcurl4-openssl-dev
 
-    # needed for unattended upgrades
-    bsd-mailx
+    # a javascript runtime for Rails
+    nodejs
 
-    unattended-upgrades
+    # needed for unattended upgrades
+    # bsd-mailx
+    # unattended-upgrades
 
 )
 
@@ -50,6 +52,7 @@ gem install passenger
 # https://www.digitalocean.com/community/tutorials/how-to-deploy-rails-apps-using-passenger-with-nginx-on-centos-6-5
 # for context.
 rvmsudo passenger-install-nginx-module
+
 
 # move Nginx commands to the right folder, and make executable
 # sudo cp nginx /etc/init.d/nginx

@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=Gephi
 Comment=Network analysis
-Exec=/home/will/.programs/gephi/bin/gephi
-Icon=/home/will/.programs/gephi/logo80.jpeg
+Exec=/home/will/.programs/gephi-0.9.0/bin/gephi
+Icon=/home/will/.programs/gephi-0.9.0/logo80.jpeg
 Terminal=false
 Type=Application
 Categories=Math;Science;Education;
