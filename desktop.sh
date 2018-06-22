@@ -157,50 +157,48 @@ geo_pkgs=(
 # # delete unnecessary package file
 # rm geoda.deb
 
-program_list=(
-    google-chrome-stable # Google Chrome. Because Netflix.
-
-    # Octave (MATLAB alternative)
-    # octave
-    # dynare # macroeconomic modeling add-on
-
-    # Julia
-    julia
-
-    # emergent, cognitive science modelling
-    #emergent
-
-    # for Java dev and Gephi
-    #oracle-java8-installer
-
-    # need for taskwarrior conky!
-    # task
-    # conky
-
-    # miscellaneous
-    synaptic # good package manager
-    # kapow # punchclock
-    # focuswriter # nice writing app
+# Utilities
+util_pkgs=(
+    synaptic
+    # google-chrome-stable # get from online instead
     skype
     # simplescreenrecorder
     # openshot # easy video editing
-    gdmap # cool hard drive visualizer
+    # gdmap # cool hard drive visualizer
     pinta # simple image editing program
-    default-jdk # for compiling Java
+    # default-jdk # for compiling Java
 
-    # helpful Ubuntu programs, flash and mp3 etc.
     # lubuntu-restricted-extras
     ubuntu-restricted-extras
     # unity-tweak-tool
     gnome-tweak-tool
 )
 
+# program_list=(
+#     # Octave (MATLAB alternative)
+#     # octave
+#     # dynare # macroeconomic modeling add-on
 
-# this takes a while, even with apt-fast
-sudo apt-get -y install ${program_list[*]}
+#     # # Julia
+#     # julia
 
-# I had a problem with uninstalled dependencies, not sure why
-sudo apt-get -y install -f
+#     # emergent, cognitive science modelling
+#     #emergent
+
+#     # for Java dev and Gephi
+#     #oracle-java8-installer
+
+#     # need for taskwarrior conky!
+#     # task
+#     # conky
+# )
+
+
+# # this takes a while, even with apt-fast
+# sudo apt-get -y install ${program_list[*]}
+
+# # I had a problem with uninstalled dependencies, not sure why
+# sudo apt-get -y install -f
 
 
 # Research
