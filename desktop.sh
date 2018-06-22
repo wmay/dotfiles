@@ -128,8 +128,10 @@ programming_pkgs=(
 stats_pkgs=(
     r-base
     r-base-dev
+    libxml2-dev # required for R devtools
     wxmaxima
     # maxima-emacs # nice emacs interface
+    # jags
 )
 # install some R packages
 sudo Rscript packages.R
@@ -191,12 +193,6 @@ program_list=(
     ubuntu-restricted-extras
     # unity-tweak-tool
     gnome-tweak-tool
-    
-    # dependency for xml2 R package, required for devtools
-    libxml2-dev
-
-    # Just Another Gibbs Sampler
-    jags
 )
 
 
