@@ -137,6 +137,27 @@ stats_pkgs=(
 # install some R packages
 sudo Rscript packages.R
 
+# Spatial analysis
+geo_pkgs=(
+    libgdal-dev
+    libproj-dev
+    # # QGIS
+    # qgis
+    # python-qgis
+
+    # # GeoDa
+    # freeglut3
+    # libcurl4-gnutls-dev
+    # libssl0.9.8
+)
+# # GeoDa
+# # get .deb package
+# curl https://geodacenter.org/downloads/unprotected/GeoDa-1.6.6-Ubuntu-64bit.deb -o geoda.deb
+# # install
+# sudo dpkg -i geoda.deb
+# # delete unnecessary package file
+# rm geoda.deb
+
 program_list=(
     google-chrome-stable # Google Chrome. Because Netflix.
 
@@ -149,10 +170,6 @@ program_list=(
 
     # emergent, cognitive science modelling
     #emergent
-
-    # QGIS
-    # qgis
-    # python-qgis
 
     # for Java dev and Gephi
     #oracle-java8-installer
@@ -180,21 +197,12 @@ program_list=(
     ubuntu-restricted-extras
     unity-tweak-tool
     gnome-tweak-tool
-
-    # for GeoDa
-    # freeglut3
-    # libcurl4-gnutls-dev
-    # libssl0.9.8
     
     # dependency for xml2 R package, required for devtools
     libxml2-dev
 
     # Just Another Gibbs Sampler
     jags
-
-    # for R package rgdal, for Spatial Econometrics class
-    libgdal-dev
-    libproj-dev
 
     # for adsuck (DNS blocker tool)
     # libldns-dev
@@ -233,15 +241,6 @@ research_pkgs=(
 
 # # some Ruby gems
 # gem install mechanize
-
-
-# # GeoDa
-# # get .deb package
-# curl https://geodacenter.org/downloads/unprotected/GeoDa-1.6.6-Ubuntu-64bit.deb -o geoda.deb
-# # install
-# sudo dpkg -i geoda.deb
-# # delete unnecessary package file
-# rm geoda.deb
 
 
 # Gephi
