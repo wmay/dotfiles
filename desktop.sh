@@ -120,12 +120,15 @@ sudo apt-get update
 #sudo apt-get -y install apt-fast
 
 
-# -- programs --
+# Programming
+programming_pkgs=(
+    emacs
+    git
+    curl
+)
 
-program_list=( emacs
-
-    # R statistical programming language
-    r-base
+program_list=(
+    r-base # R statistical programming language
     r-base-dev
     #yacas # to do algebra and calculus in R
 
