@@ -132,6 +132,10 @@ stats_pkgs=(
     wxmaxima
     # maxima-emacs # nice emacs interface
     # jags
+
+    # python tools
+    jupyter
+    ipython
 )
 # install some R packages
 sudo Rscript packages.R
