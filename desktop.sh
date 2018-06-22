@@ -35,15 +35,16 @@ sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /et
 # may need
 #sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 1397BC53640DB551
 
-# add postgresql-9.5-citus pgdg repository
+# add postgresql repository
 echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" | sudo tee -a /etc/apt/sources.list.d/pgdg.list
 sudo apt-get install wget ca-certificates
 wget --quiet --no-check-certificate -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 sudo apt-get update
 
 # get other helpful repositories
-repository_list=( ppa:nilarimogard/webupd8
-    # launchpad-getkeys, for fixing repo GPG keys
+repository_list=(
+    # ppa:nilarimogard/webupd8
+    # # launchpad-getkeys, for fixing repo GPG keys
     
     #ppa:saiarcot895/myppa
     # for apt-fast
@@ -51,16 +52,16 @@ repository_list=( ppa:nilarimogard/webupd8
     # Sun Java, for Java dev and Gephi
     #ppa:webupd8team/java
 
-    # R CRAN
-    "deb http://cran.rstudio.com/bin/linux/ubuntu $name/"
+    # # R CRAN
+    # "deb http://cran.rstudio.com/bin/linux/ubuntu $name/"
 
     # Dynare
     # no utopic repo at the moment
     #"deb http://www.dynare.org/ubuntu $name main contrib"
 
-    # Julia
-    ppa:staticfloat/julia-deps
-    ppa:staticfloat/juliareleases
+    # # Julia
+    # ppa:staticfloat/julia-deps
+    # ppa:staticfloat/juliareleases
 
     # Emergent - no utopic repo yet
     #"deb http://grey.colorado.edu/ubuntu trusty main"
@@ -68,29 +69,20 @@ repository_list=( ppa:nilarimogard/webupd8
     # QGIS
     #"deb http://qgis.org/debian $name main"
 
-    # Dropbox
-    "deb http://linux.dropbox.com/ubuntu $name main"
+    # # Dropbox
+    # "deb http://linux.dropbox.com/ubuntu $name main"
 
     # SimpleScreenRecorder
     #ppa:maarten-baert/simplescreenrecorder
 
-    # Kapow punchclock and focuswriter
-    ppa:gottcode/gcppa
+    # # Kapow punchclock and focuswriter
+    # ppa:gottcode/gcppa
 
-    # f.lux
-    #ppa:kilian/f.lux # wait I'm not even using that!
+    # # psensor
+    # ppa:jfi/ppa
 
-    # psensor
-    ppa:jfi/ppa
-
-    # GCC / G++
-    #ppa:ubuntu-toolchain-r/test
-
-    # Midori
-    ppa:midori/ppa
-
-    # # Drizzle DB -- not updated for 14.04
-    # ppa:drizzle-developers/ppa
+    # # Midori
+    # ppa:midori/ppa
 )
 
 # adding the repositories
@@ -109,11 +101,11 @@ sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
 
 sudo apt-get update
 # Unavoidable configuration dialog here. Meh.
-sudo apt-get -y install launchpad-getkeys
-sudo launchpad-getkeys
+# sudo apt-get -y install launchpad-getkeys
+# sudo launchpad-getkeys
 
-# this update fixes the missing key problems
-sudo apt-get update
+# # this update fixes the missing key problems
+# sudo apt-get update
 
 
 # get apt-fast
@@ -180,13 +172,12 @@ program_list=(
     #oracle-java8-installer
 
     # need for taskwarrior conky!
-    task
-    conky
+    # task
+    # conky
 
     # miscellaneous
     synaptic # good package manager
-    redshift-gtk # tint screen at night
-    kapow # punchclock
+    # kapow # punchclock
     # focuswriter # nice writing app
     skype
     # simplescreenrecorder
@@ -194,13 +185,11 @@ program_list=(
     gdmap # cool hard drive visualizer
     pinta # simple image editing program
     default-jdk # for compiling Java
-    #libgnome2-bin # gnome-open, for plotKML in R
-    libgsl0-dev # for 'topicmodels' in R
 
     # helpful Ubuntu programs, flash and mp3 etc.
     # lubuntu-restricted-extras
     ubuntu-restricted-extras
-    unity-tweak-tool
+    # unity-tweak-tool
     gnome-tweak-tool
     
     # dependency for xml2 R package, required for devtools
@@ -208,21 +197,6 @@ program_list=(
 
     # Just Another Gibbs Sampler
     jags
-
-    # for adsuck (DNS blocker tool)
-    # libldns-dev
-    # libevent-dev
-
-    # # for shard query
-    # gearman
-    # apache2
-    # php-pear
-    # php5-mysql
-    # php5-curl
-    # libboost-dev
-    # libevent-dev
-    # libmysql-dev
-    # libssl-dev
 )
 
 
