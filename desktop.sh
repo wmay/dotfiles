@@ -127,18 +127,18 @@ programming_pkgs=(
     curl
 )
 
-program_list=(
-    r-base # R statistical programming language
+# Stats
+stats_pkgs=(
+    r-base
     r-base-dev
-    #yacas # to do algebra and calculus in R
+    wxmaxima
+    # maxima-emacs # nice emacs interface
+)
+# install some R packages
+sudo Rscript packages.R
 
-    # Google Chrome. Because Netflix.
-    google-chrome-stable
-
-    # Maxima computer algebra system (Maple alternative)
-    maxima
-    wxmaxima # nice gui
-    maxima-emacs # nice emacs interface
+program_list=(
+    google-chrome-stable # Google Chrome. Because Netflix.
 
     # Octave (MATLAB alternative)
     # octave
@@ -218,11 +218,6 @@ sudo apt-get -y install ${program_list[*]}
 
 # I had a problem with uninstalled dependencies, not sure why
 sudo apt-get -y install -f
-
-
-# install some R packages
-sudo Rscript packages.R
-
 
 
 # Research
