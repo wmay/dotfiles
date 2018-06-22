@@ -221,6 +221,18 @@ sudo apt-get -y install -f
 sudo Rscript packages.R
 
 
+
+# Research
+
+# this repository contains zotero
+sudo apt-add-repository ppa:smathot/cogscinl
+research_pkgs=(
+    texlive-latex-recommended
+    texlive-publishers
+    zotero
+)
+
+
 # # some Ruby gems
 # gem install mechanize
 
