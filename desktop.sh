@@ -125,6 +125,11 @@ programming_pkgs=(
     emacs
     git
     curl
+
+    # Debian packaging tools
+    bzr
+    bzr-builddeb
+    dh-make
 )
 
 # Stats
