@@ -141,12 +141,15 @@ stats_pkgs=(
 sudo Rscript packages.R
 
 # Spatial analysis
+# when will ubuntugis add bionic?:
+# sudo add-apt-repository ppa:ubuntugis/ppa
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key CAEB3DC3BDF7FB45
+sudo add-apt-repository 'deb https://qgis.org/debian bionic main'
 geo_pkgs=(
     libgdal-dev
     libproj-dev
-    # # QGIS
-    # qgis
-    # python-qgis
+    libgeos-dev
+    qgis
 
     # # GeoDa
     # freeglut3
