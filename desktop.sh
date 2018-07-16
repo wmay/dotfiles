@@ -129,13 +129,14 @@ stats_pkgs=(
     r-base
     r-base-dev
     libxml2-dev # required for R devtools
+    libssl-dev # same
     wxmaxima
     # maxima-emacs # nice emacs interface
     # jags
 
     # python tools
     jupyter
-    ipython
+    ipython3
 )
 # install some R packages
 sudo Rscript packages.R
