@@ -123,6 +123,7 @@ programming_pkgs=(
     bzr-builddeb
     dh-make
 )
+sudo apt install ${programming_pkgs[*]}
 
 # Stats
 stats_pkgs=(
@@ -130,6 +131,7 @@ stats_pkgs=(
     r-base-dev
     libxml2-dev # required for R devtools
     libssl-dev # same
+    libcurl4-openssl-dev # also required for R packages
     wxmaxima
     # maxima-emacs # nice emacs interface
     # jags
@@ -138,6 +140,7 @@ stats_pkgs=(
     jupyter
     ipython3
 )
+sudo apt install ${stats_pkgs[*]}
 # install some R packages
 sudo Rscript packages.R
 
