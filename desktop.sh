@@ -117,6 +117,7 @@ programming_pkgs=(
     emacs
     git
     curl
+    valgrind
 
     # Debian packaging tools
     bzr
