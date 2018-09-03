@@ -186,6 +186,7 @@ util_pkgs=(
     ubuntu-restricted-extras
     # unity-tweak-tool
     gnome-tweak-tool
+    chrome-gnome-shell # for gnome extensions
 )
 
 # program_list=(
