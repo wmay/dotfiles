@@ -114,13 +114,15 @@ sudo apt-get update
 
 # Programming
 programming_pkgs=(
+    make
+    gcc
+    gfortran
     emacs
     git
     curl
     valgrind
 
     # Debian packaging tools
-    bzr
     bzr-builddeb
     dh-make
 )
