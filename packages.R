@@ -4,7 +4,7 @@ basic_packages = c(
     "rmarkdown", 'rticles', # generate PDFs
     ## "rstan", "rjags", # Bayesian modeling
     ## "testthat", # unit testing
-    ## "shiny", # web server
+    "shiny", # web server
     "pscl", "basicspace", "wnominate", "rsunlight" # poli sci
 )
 install.packages(basic_packages)
