@@ -223,6 +223,7 @@ sudo apt-add-repository ppa:smathot/cogscinl
 research_pkgs=(
     texlive-latex-recommended
     texlive-publishers
+    pandoc-citeproc
     zotero
 )
 
