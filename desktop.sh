@@ -224,7 +224,7 @@ research_pkgs=(
     texlive-latex-recommended
     texlive-publishers
     pandoc-citeproc
-    zotero
+    zotero-standalone
 )
 
 
