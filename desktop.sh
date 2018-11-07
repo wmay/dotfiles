@@ -181,6 +181,8 @@ util_pkgs=(
     # gdmap # cool hard drive visualizer
     pinta # simple image editing program
     # default-jdk # for compiling Java
+    evolution
+    evolution-ews # connect to microsoft exchange servers
 
     # lubuntu-restricted-extras
     ubuntu-restricted-extras
@@ -188,6 +190,7 @@ util_pkgs=(
     gnome-tweak-tool
     chrome-gnome-shell # for gnome extensions
 )
+sudo apt install ${util_pkgs[*]}
 
 # program_list=(
 #     # Octave (MATLAB alternative)
