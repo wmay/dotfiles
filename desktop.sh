@@ -43,18 +43,6 @@ sudo apt-get update
 
 # get other helpful repositories
 repository_list=(
-    # ppa:nilarimogard/webupd8
-    # # launchpad-getkeys, for fixing repo GPG keys
-    
-    #ppa:saiarcot895/myppa
-    # for apt-fast
-       
-    # Sun Java, for Java dev and Gephi
-    #ppa:webupd8team/java
-
-    # # R CRAN
-    # "deb http://cran.rstudio.com/bin/linux/ubuntu $name/"
-
     # Dynare
     # no utopic repo at the moment
     #"deb http://www.dynare.org/ubuntu $name main contrib"
@@ -77,12 +65,6 @@ repository_list=(
 
     # # Kapow punchclock and focuswriter
     # ppa:gottcode/gcppa
-
-    # # psensor
-    # ppa:jfi/ppa
-
-    # # Midori
-    # ppa:midori/ppa
 )
 
 # adding the repositories
