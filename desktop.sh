@@ -24,9 +24,6 @@ sudo sed -i "/^# deb .*partner/ s/^# //" /etc/apt/sources.list
 # add Google Chrome repository
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-# # elasticsearch key-- not what I'm looking for
-# wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
-# echo "deb http://packages.elastic.co/elasticsearch/2.x/debian stable main" | sudo tee -a /etc/apt/sources.list.d/elasticsearch-2.x.list
 # may need
 #sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 1397BC53640DB551
 
@@ -77,16 +74,6 @@ done
 sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
 
 sudo apt-get update
-# Unavoidable configuration dialog here. Meh.
-# sudo apt-get -y install launchpad-getkeys
-# sudo launchpad-getkeys
-
-# # this update fixes the missing key problems
-# sudo apt-get update
-
-
-# get apt-fast
-#sudo apt-get -y install apt-fast
 
 
 # Programming
@@ -196,7 +183,3 @@ research_pkgs=(
     pandoc-citeproc
     zotero-standalone
 )
-
-
-# # some Ruby gems
-# gem install mechanize
