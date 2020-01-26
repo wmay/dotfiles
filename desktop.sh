@@ -4,11 +4,6 @@
 # don't use sudo!!
 
 
-# Install server things first, then do the rest in addition
-bash server.sh
-# Or comment it out if you don't want a Ruby on Rails server
-
-
 # -- SSD things --
 # ?
 
