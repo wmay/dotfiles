@@ -200,23 +200,3 @@ research_pkgs=(
 
 # # some Ruby gems
 # gem install mechanize
-
-
-# Gephi
-
-# # make a nice-looking desktop icon
-# cp gephi.desktop ~/.local/share/applications/
-# chmod +777 ~/.local/share/applications/gephi.desktop
-
-# # add a hidden file to store misc. programs
-# mkdir ~/.programs
-# cd ~/.programs
-
-# # download Gephi installer, put in programs folder
-# # - using v. 0.9 because 0.8.2-beta is currently not working for me
-# wget "https://github.com/gephi/gephi/releases/download/v0.9.0/gephi-0.9.0-linux.tar.gz"
-# unzip gephi-0.9.0-linux.tar.gz # unzip
-# rm gephi-0.9.0-linux.tar.gz
-# # download the logo, put it in the gephi folder
-# cd gephi
-# wget http://gephi.github.io/images/badge/logo80.jpeg
