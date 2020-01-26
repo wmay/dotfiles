@@ -136,19 +136,7 @@ geo_pkgs=(
     libproj-dev
     libgeos-dev
     qgis
-
-    # # GeoDa
-    # freeglut3
-    # libcurl4-gnutls-dev
-    # libssl0.9.8
 )
-# # GeoDa
-# # get .deb package
-# curl https://geodacenter.org/downloads/unprotected/GeoDa-1.6.6-Ubuntu-64bit.deb -o geoda.deb
-# # install
-# sudo dpkg -i geoda.deb
-# # delete unnecessary package file
-# rm geoda.deb
 
 # Utilities
 util_pkgs=(
