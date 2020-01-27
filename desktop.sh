@@ -5,7 +5,7 @@
 
 
 # -- SSD things --
-# ?
+# see https://easylinuxtipsproject.blogspot.com/p/ssd.html
 
 
 # -- get name of distribution --
@@ -27,44 +27,33 @@ sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /et
 # may need
 #sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 1397BC53640DB551
 
-# add postgresql repository
-echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" | sudo tee -a /etc/apt/sources.list.d/pgdg.list
-sudo apt-get install wget ca-certificates
-wget --quiet --no-check-certificate -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-sudo apt-get update
 
-# get other helpful repositories
-repository_list=(
-    # Dynare
-    # no utopic repo at the moment
-    #"deb http://www.dynare.org/ubuntu $name main contrib"
 
-    # # Julia
-    # ppa:staticfloat/julia-deps
-    # ppa:staticfloat/juliareleases
+# # get other helpful repositories
+# repository_list=(
+#     # # Julia
+#     # ppa:staticfloat/julia-deps
+#     # ppa:staticfloat/juliareleases
 
-    # Emergent - no utopic repo yet
-    #"deb http://grey.colorado.edu/ubuntu trusty main"
+#     # Emergent - no utopic repo yet
+#     #"deb http://grey.colorado.edu/ubuntu trusty main"
 
-    # QGIS
-    #"deb http://qgis.org/debian $name main"
+#     # # Dropbox
+#     # "deb http://linux.dropbox.com/ubuntu $name main"
 
-    # # Dropbox
-    # "deb http://linux.dropbox.com/ubuntu $name main"
+#     # SimpleScreenRecorder
+#     #ppa:maarten-baert/simplescreenrecorder
 
-    # SimpleScreenRecorder
-    #ppa:maarten-baert/simplescreenrecorder
+#     # # Kapow punchclock and focuswriter
+#     # ppa:gottcode/gcppa
+# )
 
-    # # Kapow punchclock and focuswriter
-    # ppa:gottcode/gcppa
-)
-
-# adding the repositories
-arraylength=${#array[@]}
-for (( n=0; n<${#repository_list[@]}; n++ ));
-do
-  sudo add-apt-repository -y "${repository_list[$n]}"
-done
+# # adding the repositories
+# arraylength=${#array[@]}
+# for (( n=0; n<${#repository_list[@]}; n++ ));
+# do
+#   sudo add-apt-repository -y "${repository_list[$n]}"
+# done
 
 
 
@@ -72,12 +61,11 @@ done
 
 # for Dropbox
 sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
-
 sudo apt-get update
 
 
 # Programming
-programming_pkgs=(
+pkgs=(
     make
     gcc
     gfortran
@@ -85,67 +73,107 @@ programming_pkgs=(
     git
     curl
     valgrind
-
-    # Debian packaging tools
-    bzr-builddeb
-    dh-make
+    fish
+    powerline
+    fonts-firacode
+    fonts-hack
+    fonts-inconsolata
 )
-sudo apt install ${programming_pkgs[*]}
+sudo apt install ${pkgs[*]}
 
-# Stats
+
+# Statistics
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
 sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/'
-stats_pkgs=(
+pkgs=(
     r-base
     r-base-dev
     libxml2-dev # required for R devtools
     libssl-dev # same
     libcurl4-openssl-dev # also required for R packages
-    wxmaxima
+    # wxmaxima
     # maxima-emacs # nice emacs interface
     # jags
-
-    # python tools
     jupyter
     ipython3
 )
-sudo apt install ${stats_pkgs[*]}
-# install some R packages
+sudo apt install ${pkgs[*]}
 sudo Rscript packages.R
 
+
+# Research
+sudo apt-add-repository ppa:smathot/cogscinl # zotero
+pkgs=(
+    texlive-latex-recommended
+    texlive-publishers
+    pandoc-citeproc
+    zotero-standalone
+)
+sudo apt install ${pkgs[*]}
+
+
+# Postgres
+# add postgresql repository
+echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" | sudo tee -a /etc/apt/sources.list.d/pgdg.list
+sudo apt-get install wget ca-certificates
+wget --quiet --no-check-certificate -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+sudo add-apt-repository ppa:timescale/timescaledb-ppa
+sudo apt-get update
+pkgs=(
+    postgresql
+    postgis
+    timescaledb-postgresql-11
+)
+sudo apt install ${pkgs[*]}
+
+
 # Spatial analysis
-# when will ubuntugis add bionic?:
-# sudo add-apt-repository ppa:ubuntugis/ppa
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key CAEB3DC3BDF7FB45
-sudo add-apt-repository 'deb https://qgis.org/debian bionic main'
-geo_pkgs=(
+sudo add-apt-repository ppa:ubuntugis/ppa
+pkgs=(
     libgdal-dev
     libproj-dev
     libgeos-dev
     qgis
 )
+sudo apt install ${pkgs[*]}
+
 
 # Utilities
-util_pkgs=(
+pkgs=(
     synaptic
     # google-chrome-stable # get from online instead
     skype
     # simplescreenrecorder
     # openshot # easy video editing
-    # gdmap # cool hard drive visualizer
     pinta # simple image editing program
     # default-jdk # for compiling Java
     evolution
     evolution-ews # connect to microsoft exchange servers
-
     # lubuntu-restricted-extras
     ubuntu-restricted-extras
-    # unity-tweak-tool
     gnome-tweak-tool
     chrome-gnome-shell # for gnome extensions
 )
-sudo apt install ${util_pkgs[*]}
+sudo apt install ${pkgs[*]}
 
+
+# Android/LineageOS
+pkgs=(
+    adb
+    heimdall-flash-frontend
+)
+sudo apt install ${pkgs[*]}
+
+
+# Debian packaging
+pkgs=(
+    bzr-builddeb
+    dh-make
+)
+sudo apt install ${pkgs[*]}
+
+
+# Misc
 # program_list=(
 #     # Octave (MATLAB alternative)
 #     # octave
@@ -156,30 +184,8 @@ sudo apt install ${util_pkgs[*]}
 
 #     # emergent, cognitive science modelling
 #     #emergent
-
-#     # for Java dev and Gephi
-#     #oracle-java8-installer
-
-#     # need for taskwarrior conky!
-#     # task
-#     # conky
 # )
+# sudo apt-get install ${program_list[*]}
 
 
-# # this takes a while, even with apt-fast
-# sudo apt-get -y install ${program_list[*]}
 
-# # I had a problem with uninstalled dependencies, not sure why
-# sudo apt-get -y install -f
-
-
-# Research
-
-# this repository contains zotero
-sudo apt-add-repository ppa:smathot/cogscinl
-research_pkgs=(
-    texlive-latex-recommended
-    texlive-publishers
-    pandoc-citeproc
-    zotero-standalone
-)
