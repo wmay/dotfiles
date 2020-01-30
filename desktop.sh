@@ -80,6 +80,11 @@ pkgs=(
     fonts-inconsolata
 )
 sudo apt install ${pkgs[*]}
+# switch to fish shell
+chsh -s `which fish`
+# get emacs config
+mkdir ~/.emacs.d
+git clone git@github.com:wmay/emacs_init.git ~/.emacs.d
 
 
 # Statistics
