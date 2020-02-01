@@ -80,8 +80,10 @@ pkgs=(
     fonts-inconsolata
 )
 sudo apt install ${pkgs[*]}
-# switch to fish shell
+# switch to fish shell and set up fish
 chsh -s `which fish`
+curl -L https://get.oh-my.fish | fish
+fish -c "omf install bobthefish"
 # get emacs config
 mkdir ~/.emacs.d
 git clone git@github.com:wmay/emacs_init.git ~/.emacs.d
