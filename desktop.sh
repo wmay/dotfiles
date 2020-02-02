@@ -66,24 +66,29 @@ sudo apt-get update
 
 # Programming
 pkgs=(
-    make
-    gcc
-    gfortran
-    emacs
-    git
     curl
-    valgrind
+    emacs
+    fasd
     fish
-    powerline
     fonts-firacode
     fonts-hack
-    fonts-inconsolata
+    gcc
+    gfortran
+    git
+    make
+    powerline
+    valgrind
 )
 sudo apt install ${pkgs[*]}
 # switch to fish shell and set up fish
 chsh -s `which fish`
 curl -L https://get.oh-my.fish | fish
-fish -c "omf install bobthefish"
+omf_pkgs=(
+    bobthefish
+    fasd
+    pisces
+)
+fish -c "omf install ${omf_pkgs[*]}; and fasd --init auto"
 # get emacs config
 mkdir ~/.emacs.d
 git clone git@github.com:wmay/emacs_init.git ~/.emacs.d
