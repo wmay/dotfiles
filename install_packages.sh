@@ -4,66 +4,6 @@
 # don't use sudo!!
 
 
-# -- SSD things --
-# see https://easylinuxtipsproject.blogspot.com/p/ssd.html
-
-
-# -- get name of distribution --
-
-# "name=`lsb_release -c -s`" doesn't get the Ubuntu name in Linux Mint!
-# see http://forums.linuxmint.com/viewtopic.php?f=18&t=127743
-# Better version:
-name=`grep "VERSION=" /etc/os-release | awk '{print $(NF-1)}' | tr [:upper:] [:lower:] | tr -d '('`
-
-
-# -- REPOS --
-
-# enable the Canonical partners repository
-sudo sed -i "/^# deb .*partner/ s/^# //" /etc/apt/sources.list
-
-# add Google Chrome repository
-wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-# may need
-#sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 1397BC53640DB551
-
-
-
-# # get other helpful repositories
-# repository_list=(
-#     # # Julia
-#     # ppa:staticfloat/julia-deps
-#     # ppa:staticfloat/juliareleases
-
-#     # Emergent - no utopic repo yet
-#     #"deb http://grey.colorado.edu/ubuntu trusty main"
-
-#     # # Dropbox
-#     # "deb http://linux.dropbox.com/ubuntu $name main"
-
-#     # SimpleScreenRecorder
-#     #ppa:maarten-baert/simplescreenrecorder
-
-#     # # Kapow punchclock and focuswriter
-#     # ppa:gottcode/gcppa
-# )
-
-# # adding the repositories
-# arraylength=${#array[@]}
-# for (( n=0; n<${#repository_list[@]}; n++ ));
-# do
-#   sudo add-apt-repository -y "${repository_list[$n]}"
-# done
-
-
-
-# -- fix repository GPG keys --
-
-# for Dropbox
-sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
-sudo apt-get update
-
-
 # Programming
 pkgs=(
     curl
@@ -183,21 +123,3 @@ pkgs=(
     dh-make
 )
 sudo apt install ${pkgs[*]}
-
-
-# Misc
-# program_list=(
-#     # Octave (MATLAB alternative)
-#     # octave
-#     # dynare # macroeconomic modeling add-on
-
-#     # # Julia
-#     # julia
-
-#     # emergent, cognitive science modelling
-#     #emergent
-# )
-# sudo apt-get install ${program_list[*]}
-
-
-
