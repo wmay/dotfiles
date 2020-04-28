@@ -7,6 +7,7 @@ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD
 repo_keys=(
     https://www.postgresql.org/media/keys/ACCC4CF8.asc
     https://github.com/retorquere/zotero-deb/releases/download/apt-get/deb.gpg.key
+    https://download.spotify.com/debian/pubkey.gpg
 )
 for k in ${repo_keys[*]}; do
     wget -qO- $k | sudo apt-key add -
@@ -19,6 +20,7 @@ repos=(
     # ppa:ubuntugis/ppa
     # ppa:timescale/timescaledb-ppa
     "deb https://github.com/retorquere/zotero-deb/releases/download/apt-get/ ./"
+    "deb http://repository.spotify.com stable non-free"
 )
 for r in "${repos[@]}"; do
     sudo apt-add-repository -yu "$r"
@@ -80,12 +82,13 @@ spatial_pkgs=(
 
 # Utilities
 util_pkgs=(
-    pinta # simple image editing program
-    evolution
-    evolution-ews # connect to microsoft exchange servers
-    ubuntu-restricted-extras
-    gnome-tweaks
     chrome-gnome-shell # for gnome extensions
+    evolution evolution-ews
+    gnome-tweaks
+    pinta # simple image editing program
+    spotify-client
+    ubuntu-restricted-extras
+    vlc
 )
 
 # Android/LineageOS
