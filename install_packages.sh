@@ -43,13 +43,12 @@ code_pkgs=(
 
 # Statistics
 stats_pkgs=(
-    r-base
-    r-base-dev
-    # wxmaxima
-    # maxima-emacs # nice emacs interface
-    jags
-    jupyter
     ipython3
+    jags
+    julia
+    jupyter
+    r-base r-base-dev
+    # wxmaxima maxima-emacs
     # libraries required for compiling R packages
     libxml2-dev
     libssl-dev
