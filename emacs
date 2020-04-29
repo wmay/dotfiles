@@ -17,6 +17,7 @@
  '(ess-style (quote GNU))
  '(eww-search-prefix "https://www.google.com/search?q=")
  '(fci-rule-use-dashes t)
+ '(fill-column 80)
  '(inferior-R-args "--no-restore --no-save")
  '(inhibit-startup-screen t)
  '(menu-bar-mode nil)
@@ -26,7 +27,7 @@
      ("melpa" . "https://melpa.org/packages/"))))
  '(package-selected-packages
    (quote
-    (poly-R mood-line sql-indent web-mode stan-mode smex smartparens multiple-cursors markdown-mode magit fill-column-indicator ess electric-operator dired-toggle-sudo cython-mode csv-mode auto-complete)))
+    (poly-R mood-line sql-indent web-mode stan-mode smex smartparens multiple-cursors markdown-mode magit ess electric-operator dired-toggle-sudo cython-mode csv-mode auto-complete)))
  '(python-shell-interpreter "ipython3")
  '(python-shell-interpreter-args "--simple-prompt --nosep")
  '(scroll-bar-mode nil)
