@@ -27,7 +27,7 @@
      ("melpa" . "https://melpa.org/packages/"))))
  '(package-selected-packages
    (quote
-    (poly-R mood-line sql-indent web-mode stan-mode smex smartparens multiple-cursors markdown-mode magit ess electric-operator dired-toggle-sudo cython-mode csv-mode auto-complete)))
+    (poly-R mood-line sql-indent web-mode stan-mode smex smartparens multiple-cursors markdown-mode magit ess electric-operator cython-mode csv-mode auto-complete)))
  '(python-shell-interpreter "ipython3")
  '(python-shell-interpreter-args "--simple-prompt --nosep")
  '(scroll-bar-mode nil)
@@ -148,9 +148,6 @@
 
 ;; Directory navigation
 
-;; convenient sudo switching
-(require 'dired-toggle-sudo)
-(define-key dired-mode-map (kbd "C-c C-s") 'dired-toggle-sudo)
 ;; nicer file sizes
 (setq dired-listing-switches "-alh")
 ;; for unzipping files
