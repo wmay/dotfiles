@@ -84,6 +84,7 @@ spatial_pkgs=(
 util_pkgs=(
     chrome-gnome-shell # for gnome extensions
     evolution evolution-ews
+    filezilla
     gnome-tweaks
     pinta # simple image editing program
     spotify-client
