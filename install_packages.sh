@@ -27,8 +27,6 @@ for r in "${repos[@]}"; do
 done
 
 # install packages
-
-# Programming
 code_pkgs=(
     curl
     emacs
@@ -42,8 +40,6 @@ code_pkgs=(
     powerline
     valgrind
 )
-
-# Statistics
 stats_pkgs=(
     ipython3
     jags
@@ -56,31 +52,23 @@ stats_pkgs=(
     libssl-dev
     libcurl4-openssl-dev
 )
-
-# Research
 research_pkgs=(
     texlive-latex-recommended
     texlive-publishers
     pandoc-citeproc
     zotero
 )
-
-# Postgres
 db_pkgs=(
     postgresql
     postgis
     timescaledb-postgresql-12
 )
-
-# Spatial analysis
 spatial_pkgs=(
     libgdal-dev
     libproj-dev
     libgeos-dev
     # qgis
 )
-
-# Utilities
 util_pkgs=(
     chrome-gnome-shell # for gnome extensions
     evolution evolution-ews
@@ -91,22 +79,17 @@ util_pkgs=(
     ubuntu-restricted-extras
     vlc
 )
-
-# Android/LineageOS
 android_pkgs=(
     adb
     heimdall-flash-frontend
 )
-
-# Debian packaging
 deb_pkgs=(
+    apt-file
     brz-debian
     dh-make
     pbuilder
     ubuntu-dev-tools
-    apt-file
 )
-
 sudo apt install ${code_pkgs[*]} ${stats_pkgs[*]} \
      ${research_pkgs[*]} ${db_pkgs[*]} ${spatial_pkgs[*]} \
      ${util_pkgs[*]}
