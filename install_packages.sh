@@ -102,6 +102,9 @@ android_pkgs=(
 deb_pkgs=(
     brz-debian
     dh-make
+    pbuilder
+    ubuntu-dev-tools
+    apt-file
 )
 
 sudo apt install ${code_pkgs[*]} ${stats_pkgs[*]} \
