@@ -5,9 +5,9 @@
 
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-ln -s ${BASEDIR}/gitconfig ~/.gitconfig
-ln -s ${BASEDIR}/gitignore_global ~/.gitignore_global
-ln -s ${BASEDIR}/emacs ~/.emacs
-ln -s ${BASEDIR}/config.fish ~/.config/fish/config.fish
-ln -s ${BASEDIR}/Rprofile ~/.Rprofile
-ln -s ${BASEDIR}/hidden ~/.hidden
+ln -sf ${BASEDIR}/gitconfig ~/.gitconfig
+ln -sf ${BASEDIR}/gitignore_global ~/.gitignore_global
+ln -sf ${BASEDIR}/emacs ~/.emacs
+ln -sf ${BASEDIR}/config.fish ~/.config/fish/config.fish
+ln -sf ${BASEDIR}/Rprofile ~/.Rprofile
+ln -sf ${BASEDIR}/hidden ~/.hidden
