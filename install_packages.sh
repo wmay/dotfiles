@@ -46,6 +46,7 @@ stats_pkgs=(
     jags
     julia
     jupyter
+    libopenblas0-serial libopenblas-base
     r-base r-base-dev
     # wxmaxima maxima-emacs
     # libraries required for compiling R packages
