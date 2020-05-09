@@ -38,6 +38,7 @@ code_pkgs=(
     git
     make
     powerline
+    tldr
     valgrind
 )
 stats_pkgs=(
