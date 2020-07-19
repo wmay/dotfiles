@@ -76,6 +76,7 @@ util_pkgs=(
     evolution evolution-ews
     filezilla
     gnome-tweaks
+    libdvd-pkg
     pinta # simple image editing program
     spotify-client
     ubuntu-restricted-extras
