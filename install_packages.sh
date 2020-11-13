@@ -54,6 +54,7 @@ stats_pkgs=(
     libxml2-dev
     libssl-dev
     libcurl4-openssl-dev
+    libfontconfig1-dev libharfbuzz-dev libfribidi-dev # for pkgdown
 )
 research_pkgs=(
     texlive-latex-recommended
