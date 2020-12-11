@@ -55,6 +55,7 @@ stats_pkgs=(
     libssl-dev
     libcurl4-openssl-dev
     libfontconfig1-dev libharfbuzz-dev libfribidi-dev # for pkgdown
+    libgit2-dev # for usethis
 )
 research_pkgs=(
     texlive-latex-recommended
@@ -66,6 +67,7 @@ db_pkgs=(
     postgresql
     postgis
     timescaledb-postgresql-12
+    sqlite3
 )
 spatial_pkgs=(
     libgdal-dev
