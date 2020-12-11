@@ -125,6 +125,9 @@
 (setq ess-indent-with-fancy-comments nil)
 ;; remove exasperating double comment symbols
 (add-hook 'ess-r-mode-hook (lambda () (setq-local comment-add 0)))
+;; make R Markdown work
+(require 'polymode)
+(require 'poly-R)
 ;; web-mode
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
