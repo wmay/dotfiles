@@ -116,6 +116,8 @@
 
 ;; Mode customizations
 
+;; magit
+(setq magit-bury-buffer-function 'magit-mode-quit-window)
 ;; ess
 (add-hook 'ess-r-mode-hook (function electric-operator-mode))
 (add-hook 'ess-julia-mode-hook (function electric-operator-mode))
