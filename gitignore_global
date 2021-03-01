@@ -1,6 +1,6 @@
 
-# Created by https://www.gitignore.io/api/linux,emacs
-# Edit at https://www.gitignore.io/?templates=linux,emacs
+# Created by https://www.toptal.com/developers/gitignore/api/linux,emacs,libreoffice
+# Edit at https://www.toptal.com/developers/gitignore?templates=linux,emacs,libreoffice
 
 ### Emacs ###
 # -*- mode: gitignore; -*-
@@ -16,6 +16,7 @@ tramp
 # Org-mode
 .org-id-locations
 *_archive
+ltximg/**
 
 # flymake-mode
 *_flymake.*
@@ -53,6 +54,10 @@ flycheck_*.el
 /network-security.data
 
 
+### LibreOffice ###
+# LibreOffice locks
+.~lock.*#
+
 ### Linux ###
 
 # temporary files which can be created if a process still has a handle open of a deleted file
@@ -67,4 +72,4 @@ flycheck_*.el
 # .nfs files are created when an open file is removed but is still being accessed
 .nfs*
 
-# End of https://www.gitignore.io/api/linux,emacs
+# End of https://www.toptal.com/developers/gitignore/api/linux,emacs,libreoffice
