@@ -125,6 +125,7 @@
 (setq ess-ask-for-ess-directory nil)
 (ess-toggle-underscore nil)
 (setq ess-indent-with-fancy-comments nil)
+(setq ess-auto-width 'window)
 ;; remove exasperating double comment symbols
 (add-hook 'ess-r-mode-hook (lambda () (setq-local comment-add 0)))
 ;; make R Markdown work
