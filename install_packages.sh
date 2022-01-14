@@ -18,7 +18,6 @@ repos=(
     "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
     "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main"
     # ppa:ubuntugis/ppa
-    ppa:timescale/timescaledb-ppa
     "deb https://github.com/retorquere/zotero-deb/releases/download/apt-get/ ./"
     "deb http://repository.spotify.com stable non-free"
 )
@@ -66,7 +65,6 @@ research_pkgs=(
 db_pkgs=(
     postgresql
     postgis
-    timescaledb-postgresql-12
     sqlite3
 )
 spatial_pkgs=(
