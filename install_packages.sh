@@ -78,7 +78,6 @@ spatial_pkgs=(
 util_pkgs=(
     chrome-gnome-shell # for gnome extensions
     evolution evolution-ews
-    filezilla
     gnome-tweaks
     libdvd-pkg
     pinta # simple image editing program
