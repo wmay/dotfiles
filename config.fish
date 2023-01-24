@@ -4,6 +4,7 @@ set fish_greeting
 # customize bobthefish theme
 function fish_greeting; end
 set -g theme_color_scheme base16-dark
+set -g theme_date_timezone America/New_York
 
 # package dev
 set -g DEBFULLNAME "William May"
