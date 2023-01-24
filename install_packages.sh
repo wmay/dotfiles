@@ -2,25 +2,6 @@
 # Set up an Ubuntu, or Ubuntu derivative, desktop
 # don't use sudo!!
 
-# first add a few repository keys
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
-repo_keys=(
-    https://www.postgresql.org/media/keys/ACCC4CF8.asc
-)
-for k in ${repo_keys[*]}; do
-    wget -qO- $k | sudo apt-key add -
-done
-
-# and repositories
-repos=(
-    # "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
-    # "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main"
-    # ppa:ubuntugis/ppa
-)
-for r in "${repos[@]}"; do
-    sudo apt-add-repository -yu "$r"
-done
-
 # install packages
 code_pkgs=(
     curl
