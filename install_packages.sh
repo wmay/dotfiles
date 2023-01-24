@@ -6,8 +6,6 @@
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
 repo_keys=(
     https://www.postgresql.org/media/keys/ACCC4CF8.asc
-    https://github.com/retorquere/zotero-deb/releases/download/apt-get/deb.gpg.key
-    https://download.spotify.com/debian/pubkey.gpg
 )
 for k in ${repo_keys[*]}; do
     wget -qO- $k | sudo apt-key add -
@@ -15,11 +13,9 @@ done
 
 # and repositories
 repos=(
-    "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
-    "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main"
+    # "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
+    # "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main"
     # ppa:ubuntugis/ppa
-    "deb https://github.com/retorquere/zotero-deb/releases/download/apt-get/ ./"
-    "deb http://repository.spotify.com stable non-free"
 )
 for r in "${repos[@]}"; do
     sudo apt-add-repository -yu "$r"
@@ -60,7 +56,7 @@ research_pkgs=(
     texlive-latex-recommended
     texlive-publishers
     pandoc pandoc-citeproc
-    zotero
+    # zotero # get it from https://github.com/retorquere/zotero-deb
 )
 db_pkgs=(
     postgresql
@@ -83,7 +79,7 @@ util_pkgs=(
     libdvd-pkg
     lm-sensors # for Freon extension
     pinta # simple image editing program
-    spotify-client
+    # spotify-client # get it from https://www.spotify.com/us/download/linux/
     ubuntu-restricted-extras
     vlc
 )
