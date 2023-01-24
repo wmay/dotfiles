@@ -59,7 +59,7 @@ stats_pkgs=(
 research_pkgs=(
     texlive-latex-recommended
     texlive-publishers
-    pandoc-citeproc
+    pandoc pandoc-citeproc
     zotero
 )
 db_pkgs=(
@@ -74,10 +74,14 @@ spatial_pkgs=(
     # qgis
 )
 util_pkgs=(
-    chrome-gnome-shell # for gnome extensions
-    evolution evolution-ews
-    gnome-tweaks
+    # chrome-gnome-shell # for gnome extensions
+    # evolution evolution-ews
+    gir1.2-gtop-2.0 gir1.2-nm-1.0 gir1.2-clutter-1.0 gnome-system-monitor # for system-monitor extension
+    gnome-shell-extension-gsconnect-browsers
+    gnome-shell-extension-manager
+    # gnome-tweaks
     libdvd-pkg
+    lm-sensors # for Freon extension
     pinta # simple image editing program
     spotify-client
     ubuntu-restricted-extras
