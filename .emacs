@@ -20,7 +20,6 @@
  '(fill-column 80)
  '(inferior-R-args "--no-restore --no-save")
  '(inhibit-startup-screen t)
- '(menu-bar-mode nil)
  '(package-archives
    (quote
     (("gnu" . "http://elpa.gnu.org/packages/")
