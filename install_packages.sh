@@ -5,6 +5,7 @@
 # install packages
 code_pkgs=(
     curl
+    default-jdk
     emacs
     fish
     # fonts-firacode
@@ -20,9 +21,9 @@ code_pkgs=(
 stats_pkgs=(
     ipython3
     jags
-    julia
+    # julia # no apt repo? get from https://julialang.org/
     jupyter
-    libopenblas0-serial libopenblas-base
+    libopenblas64-0-serial
     python3-pip
     r-base r-base-dev
     # wxmaxima maxima-emacs
@@ -40,8 +41,8 @@ research_pkgs=(
     # zotero # get it from https://github.com/retorquere/zotero-deb
 )
 db_pkgs=(
-    postgresql
-    postgis
+    # postgresql
+    # postgis
     sqlite3
 )
 spatial_pkgs=(
@@ -58,6 +59,7 @@ util_pkgs=(
     # gnome-tweaks
     libdvd-pkg
     lm-sensors # for Freon extension
+    network-manager-openconnect-gnome # alternative to GlobalProtect
     pinta # simple image editing program
     # spotify-client # get it from https://www.spotify.com/us/download/linux/
     ubuntu-restricted-extras
@@ -81,6 +83,8 @@ sudo apt install ${code_pkgs[*]} ${stats_pkgs[*]} \
 
 # Some setup afterward (probably need a makefile)
 
+tldr -u # get tldr entries
+
 # Emacs packages
 emacs --script install_packages.el
 
@@ -94,4 +98,5 @@ omf_pkgs=(
 fish -c "omf install ${omf_pkgs[*]}"
 
 # R packages
+sudo R CMD javareconf # for rJava
 sudo Rscript packages.R
