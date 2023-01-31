@@ -3,3 +3,5 @@
 	email = wmay@hey.com
 [core]
 	excludesfile = /home/will/.gitignore_global
+[credential]
+	helper = cache
