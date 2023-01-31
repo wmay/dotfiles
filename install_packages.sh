@@ -26,13 +26,18 @@ stats_pkgs=(
     libopenblas64-0-serial
     python3-pip
     r-base r-base-dev
+    sqlite3
     # wxmaxima maxima-emacs
-    # libraries required for compiling R packages
-    libxml2-dev
-    libssl-dev
+)
+# libraries required for compiling/creating R packages
+rdev_pkgs=(
     libcurl4-openssl-dev
     libfontconfig1-dev libharfbuzz-dev libfribidi-dev # for pkgdown
     libgit2-dev # for usethis
+    libssl-dev
+    libxml2-dev
+    qpdf # for R CMD check
+    texlive-fonts-extra # for inconsolata.sty
 )
 research_pkgs=(
     texlive-latex-recommended
@@ -40,17 +45,12 @@ research_pkgs=(
     pandoc pandoc-citeproc
     # zotero # get it from https://github.com/retorquere/zotero-deb
 )
-db_pkgs=(
-    # postgresql
-    # postgis
-    sqlite3
-)
-spatial_pkgs=(
-    libgdal-dev
-    libproj-dev
-    libgeos-dev
-    # qgis
-)
+# spatial_pkgs=(
+#     libgdal-dev
+#     libproj-dev
+#     libgeos-dev
+#     # qgis
+# )
 util_pkgs=(
     # evolution evolution-ews
     gir1.2-gtop-2.0 gir1.2-nm-1.0 gir1.2-clutter-1.0 gnome-system-monitor # for system-monitor extension
@@ -65,20 +65,19 @@ util_pkgs=(
     ubuntu-restricted-extras
     vlc
 )
-android_pkgs=(
-    adb
-    heimdall-flash-frontend
-)
-deb_pkgs=(
-    apt-file
-    brz-debian
-    dh-make
-    pbuilder
-    ubuntu-dev-tools
-)
-sudo apt install ${code_pkgs[*]} ${stats_pkgs[*]} \
-     ${research_pkgs[*]} ${db_pkgs[*]} ${spatial_pkgs[*]} \
-     ${util_pkgs[*]}
+# android_pkgs=(
+#     adb
+#     heimdall-flash-frontend
+# )
+# deb_pkgs=(
+#     apt-file
+#     brz-debian
+#     dh-make
+#     pbuilder
+#     ubuntu-dev-tools
+# )
+sudo apt install ${code_pkgs[*]} ${stats_pkgs[*]} ${rdev_pkgs[*]} \
+     ${research_pkgs[*]} ${util_pkgs[*]}
 
 
 # Some setup afterward (probably need a makefile)

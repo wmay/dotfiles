@@ -1,8 +1,10 @@
 dev_pkgs = c(
     "devtools",
+    "pkgdown",
     "remotes",
     "roxygen2",
     "testthat",
+    "tinytest",
     "usethis"
 )
 util_pkgs = c(
@@ -15,9 +17,9 @@ util_pkgs = c(
     "lubridate",
     "magrittr",
     "plotly",
-    "reshape2",
     "rmarkdown",
-    "RPostgreSQL",
+    # "RPostgreSQL",
+    "RSQLite",
     "rticles",
     "rvest",
     "shiny",
@@ -26,7 +28,7 @@ util_pkgs = c(
 stats_pkgs = c(
     "forecast",
     "mgcv",
-    "prophet",
+    # "prophet",
     "rjags",
     "rstan"
 )
