@@ -44,7 +44,7 @@
  ;; If there is more than one, they won't work right.
  )
 
-;; try to autoload packages
+;; this can be removed in Emacs >=27, which is in Ubuntu 22.04
 (package-initialize)
 
 
