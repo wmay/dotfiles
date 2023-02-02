@@ -20,7 +20,7 @@
    '(("gnu" . "http://elpa.gnu.org/packages/")
      ("melpa" . "https://melpa.org/packages/")))
  '(package-selected-packages
-   '(use-package poly-R mood-line sql-indent web-mode stan-mode smex smartparens multiple-cursors markdown-mode magit ess electric-operator cython-mode csv-mode auto-complete))
+   '(auto-package-update use-package poly-R mood-line sql-indent web-mode stan-mode smex smartparens multiple-cursors markdown-mode magit ess electric-operator cython-mode csv-mode auto-complete))
  '(python-shell-interpreter "ipython3")
  '(python-shell-interpreter-args "--simple-prompt --nosep")
  '(scroll-bar-mode nil)
@@ -62,6 +62,15 @@
 
 (require 'use-package)
 (setq use-package-compute-statistics 1)
+
+(use-package auto-package-update
+  :custom
+  (auto-package-update-interval 14)
+  (auto-package-update-prompt-before-update t)
+  (auto-package-update-show-preview t)
+  (auto-package-update-delete-old-versions t)
+  :config
+  (auto-package-update-maybe))
 
 
 ;; Editing
