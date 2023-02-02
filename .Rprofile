@@ -7,11 +7,5 @@ local({
   options(repos = r)
   # set the width from COLUMNS if set
   cols = Sys.getenv("COLUMNS")
-  if (nchar(cols)) {
-    cols = as.integer(cols)
-    # Emacs exaggerates the number of columns available, because the last column
-    # is used for the line-wrapping symbol, and that can make printing ugly
-    if (nchar(Sys.getenv("INSIDE_EMACS"))) cols = cols - 1
-    options(width = cols)
-  }
+  if (nzchar(cols)) options(width = as.integer(cols))
 })

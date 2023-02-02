@@ -136,7 +136,7 @@
   :custom
   (ess-ask-for-ess-directory nil)
   (ess-indent-with-fancy-comments nil)
-  (ess-auto-width 'window))
+  (ess-auto-width -1))
 
 ;; make R Markdown work
 (require 'polymode)
