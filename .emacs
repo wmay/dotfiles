@@ -47,36 +47,45 @@
 ;; this can be removed in Emacs >=27, which is in Ubuntu 22.04
 (package-initialize)
 
+(require 'use-package)
+(setq use-package-compute-statistics 1)
+
 
 ;; Editing
 
-;; autocomplete
-(ac-config-default)
-(global-auto-complete-mode t)
-(set-face-attribute 'ac-candidate-face nil   :background "#00222c" :foreground "light gray")
-(set-face-attribute 'ac-selection-face nil   :background "SteelBlue4" :foreground "white")
-(set-face-attribute 'popup-tip-face    nil   :background "#4c4c4c" :foreground "#eeeeee")
+(use-package auto-complete
+  :config (ac-config-default)
+  (global-auto-complete-mode t)
+  (set-face-attribute 'ac-candidate-face nil   :background "#00222c" :foreground "light gray")
+  (set-face-attribute 'ac-selection-face nil   :background "SteelBlue4" :foreground "white")
+  (set-face-attribute 'popup-tip-face    nil   :background "#4c4c4c" :foreground "#eeeeee"))
+
 ;; math operator spacing
-(require 'electric-operator)
-(electric-operator-add-rules-for-mode 'ess-mode
-				      (cons "^" nil))
-;; multiple cursors
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-;; parentheses autocompletion
-(smartparens-global-mode t)
+(use-package electric-operator
+  :config
+  (electric-operator-add-rules-for-mode 'ess-mode
+					(cons "^" nil)))
+
+(use-package multiple-cursors
+  :bind (("C-S-c C-S-c" . mc/edit-lines)
+	 ("C->" . mc/mark-next-like-this)
+	 ("C-<" . mc/mark-previous-like-this)
+	 ("C-c C-<" . mc/mark-all-like-this)))
+
 (defun my-create-newline-and-enter-sexp (&rest _ignored)
   (newline)
   (ess-newline-and-indent)
   (previous-line)
   (indent-according-to-mode))
-(sp-local-pair 'ess-mode "{" nil :post-handlers '(my-create-newline-and-enter-sexp))
-(sp-pair "'" nil :unless '(sp-point-after-word-p))
-(sp-pair "\"" nil :unless '(sp-point-after-word-p))
-(sp-pair "(" nil :unless '(sp-point-before-word-p))
-(sp-pair "[" nil :unless '(sp-point-before-word-p))
+(use-package smartparens
+  :config
+  (smartparens-global-mode t)
+  (sp-local-pair 'ess-mode "{" nil :post-handlers '(my-create-newline-and-enter-sexp))
+  (sp-pair "'" nil :unless '(sp-point-after-word-p))
+  (sp-pair "\"" nil :unless '(sp-point-after-word-p))
+  (sp-pair "(" nil :unless '(sp-point-before-word-p))
+  (sp-pair "[" nil :unless '(sp-point-before-word-p)))
+
 ;; convert character case
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
@@ -115,30 +124,37 @@
 
 ;; Mode customizations
 
-;; magit
-(setq magit-bury-buffer-function 'magit-mode-quit-window)
-;; ess
-(add-hook 'ess-r-mode-hook (function electric-operator-mode))
-(add-hook 'ess-julia-mode-hook (function electric-operator-mode))
-(require 'ess-site)
-(setq ess-ask-for-ess-directory nil)
-(ess-toggle-underscore nil)
-(setq ess-indent-with-fancy-comments nil)
-(setq ess-auto-width 'window)
-;; remove exasperating double comment symbols
-(add-hook 'ess-r-mode-hook (lambda () (setq-local comment-add 0)))
+(use-package magit
+  :bind (("C-x g" . magit-status)
+         ("C-x C-g" . magit-status))
+  :custom
+  (magit-bury-buffer-function 'magit-mode-quit-window))
+
+(use-package ess
+  :hook ((ess-r-mode . electric-operator-mode)
+	 (ess-julia-mode . electric-operator-mode)
+	 (ess-mode . (lambda () (ess-toggle-underscore nil)))
+	 ;; remove exasperating double comment symbols
+	 (ess-r-mode . (lambda () (setq-local comment-add 0))))
+  :custom
+  (ess-ask-for-ess-directory nil)
+  (ess-indent-with-fancy-comments nil)
+  (ess-auto-width 'window))
+
 ;; make R Markdown work
 (require 'polymode)
 (require 'poly-R)
-;; web-mode
-(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
+(use-package web-mode
+  :mode (("\\.phtml\\'" . web-mode)
+	 ("\\.tpl\\.php\\'" . web-mode)
+	 ("\\.[agj]sp\\'" . web-mode)
+	 ("\\.as[cp]x\\'" . web-mode)
+	 ("\\.erb\\'" . web-mode)
+	 ("\\.mustache\\'" . web-mode)
+	 ("\\.djhtml\\'" . web-mode)
+	 ("\\.html?\\'" . web-mode)))
+
 ;; actually, need python 2 for Python Mapper
 ;; (setq python-shell-interpreter "python3")
 (setq python-mode-hook #'electric-operator-mode)
