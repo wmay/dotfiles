@@ -4,34 +4,31 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (wombat)))
+ '(custom-enabled-themes '(wombat))
  '(electric-indent-mode t)
- '(electric-operator-R-named-argument-style (quote spaced))
- '(ess-default-style (quote GNU))
- '(ess-indent-with-fancy-comments nil)
+ '(electric-operator-R-named-argument-style 'spaced)
+ '(ess-default-style 'GNU)
  '(ess-r-package-auto-enable-namespaced-evaluation nil)
  '(ess-r-package-auto-set-evaluation-env nil)
- '(ess-style (quote GNU))
+ '(ess-style 'GNU)
  '(eww-search-prefix "https://www.google.com/search?q=")
  '(fci-rule-use-dashes t)
  '(fill-column 80)
  '(inferior-R-args "--no-restore --no-save")
  '(inhibit-startup-screen t)
  '(package-archives
-   (quote
-    (("gnu" . "http://elpa.gnu.org/packages/")
-     ("melpa" . "https://melpa.org/packages/"))))
+   '(("gnu" . "http://elpa.gnu.org/packages/")
+     ("melpa" . "https://melpa.org/packages/")))
  '(package-selected-packages
-   (quote
-    (poly-R mood-line sql-indent web-mode stan-mode smex smartparens multiple-cursors markdown-mode magit ess electric-operator cython-mode csv-mode auto-complete)))
+   '(use-package poly-R mood-line sql-indent web-mode stan-mode smex smartparens multiple-cursors markdown-mode magit ess electric-operator cython-mode csv-mode auto-complete))
  '(python-shell-interpreter "ipython3")
  '(python-shell-interpreter-args "--simple-prompt --nosep")
  '(scroll-bar-mode nil)
  '(sp-highlight-pair-overlay nil)
  '(split-height-threshold nil)
  '(split-width-threshold 140)
- '(sql-mode-hook (quote (sqlind-minor-mode)))
- '(sql-product (quote postgres))
+ '(sql-mode-hook '(sqlind-minor-mode))
+ '(sql-product 'postgres)
  '(tool-bar-mode nil)
  '(truncate-lines nil))
 (custom-set-faces
