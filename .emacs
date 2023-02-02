@@ -1,6 +1,3 @@
-;; Start Emacs in fullscreen mode
-(modify-all-frames-parameters '((fullscreen . maximized)))
-
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -46,6 +43,25 @@
 
 ;; this can be removed in Emacs >=27, which is in Ubuntu 22.04
 (package-initialize)
+
+;; Misc
+
+;; make answering questions easier
+(defalias 'yes-or-no-p 'y-or-n-p)
+;; minibuffer autocompletion
+(ido-mode t)
+(global-set-key (kbd "M-x") 'smex)
+;; remove unused left space
+(modify-all-frames-parameters '((left-fringe . 0)))
+;; replace annoying error noise with visual notification
+(setq visible-bell 1)
+;; nicer mode line
+(mood-line-mode)
+
+;; Start Emacs in fullscreen mode. This should be called after other commands
+;; that change the display (for example the fringe, tool bar mode, scroll bar
+;; mode, or theme). Otherwise it can miscalculate the number of columns!
+(modify-all-frames-parameters '((fullscreen . maximized)))
 
 (require 'use-package)
 (setq use-package-compute-statistics 1)
@@ -105,22 +121,6 @@
 		;; 				     plain-tex-mode))
 		(let ((mark-even-if-inactive transient-mark-mode))
 		  (indent-region (region-beginning) (region-end) nil))))))
-
-
-;; Misc
-
-;; make answering questions easier
-(defalias 'yes-or-no-p 'y-or-n-p)
-;; minibuffer autocompletion
-(ido-mode t)
-(global-set-key (kbd "M-x") 'smex)
-;; remove unused left space
-(modify-all-frames-parameters '((left-fringe . 0)))
-;; replace annoying error noise with visual notification
-(setq visible-bell 1)
-;; nicer mode line
-(mood-line-mode)
-
 
 ;; Mode customizations
 
