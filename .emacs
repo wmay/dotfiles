@@ -20,7 +20,7 @@
    '(("gnu" . "http://elpa.gnu.org/packages/")
      ("melpa" . "https://melpa.org/packages/")))
  '(package-selected-packages
-   '(auto-package-update use-package poly-R mood-line sql-indent web-mode stan-mode smex smartparens multiple-cursors markdown-mode magit ess electric-operator cython-mode csv-mode auto-complete))
+   '(yaml-mode auto-package-update use-package poly-R mood-line sql-indent web-mode stan-mode smex smartparens multiple-cursors markdown-mode magit ess electric-operator cython-mode csv-mode auto-complete))
  '(python-shell-interpreter "ipython3")
  '(python-shell-interpreter-args "--simple-prompt --nosep")
  '(scroll-bar-mode nil)
@@ -150,6 +150,9 @@
 ;; make R Markdown work
 (require 'polymode)
 (require 'poly-R)
+
+(use-package yaml-mode
+  :mode ("\\.ya?ml\\'" . yaml-mode))
 
 (use-package web-mode
   :mode (("\\.phtml\\'" . web-mode)
