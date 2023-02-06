@@ -5,16 +5,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(wombat))
- '(electric-indent-mode t)
- '(electric-operator-R-named-argument-style 'spaced)
- '(ess-default-style 'GNU)
- '(ess-r-package-auto-enable-namespaced-evaluation nil)
- '(ess-r-package-auto-set-evaluation-env nil)
- '(ess-style 'GNU)
  '(eww-search-prefix "https://www.google.com/search?q=")
  '(fci-rule-use-dashes t)
  '(fill-column 80)
- '(inferior-R-args "--no-restore --no-save")
  '(inhibit-startup-screen t)
  '(package-archives
    '(("gnu" . "http://elpa.gnu.org/packages/")
@@ -24,7 +17,6 @@
  '(python-shell-interpreter "ipython3")
  '(python-shell-interpreter-args "--simple-prompt --nosep")
  '(scroll-bar-mode nil)
- '(sp-highlight-pair-overlay nil)
  '(split-height-threshold nil)
  '(split-width-threshold 140)
  '(sql-mode-hook '(sqlind-minor-mode))
@@ -84,6 +76,9 @@
 
 ;; math operator spacing
 (use-package electric-operator
+  :custom
+  (electric-indent-mode t)
+  (electric-operator-R-named-argument-style 'spaced)  
   :config
   (electric-operator-add-rules-for-mode 'ess-mode
 					(cons "^" nil)))
@@ -100,6 +95,8 @@
   (previous-line)
   (indent-according-to-mode))
 (use-package smartparens
+  :custom
+  (sp-highlight-pair-overlay nil)
   :config
   (smartparens-global-mode t)
   (sp-local-pair 'ess-mode "{" nil :post-handlers '(my-create-newline-and-enter-sexp))
@@ -143,6 +140,11 @@
 	 ;; remove exasperating double comment symbols
 	 (ess-r-mode . (lambda () (setq-local comment-add 0))))
   :custom
+  (inferior-R-args "--no-restore --no-save")
+  (ess-default-style 'GNU)
+  (ess-r-package-auto-enable-namespaced-evaluation nil)
+  (ess-r-package-auto-set-evaluation-env nil)
+  (ess-style 'GNU)
   (ess-ask-for-ess-directory nil)
   (ess-indent-with-fancy-comments nil)
   (ess-auto-width -1))
