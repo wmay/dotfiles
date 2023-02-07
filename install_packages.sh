@@ -7,6 +7,7 @@ code_pkgs=(
     curl
     default-jdk
     emacs
+    emacs-common-non-dfsg # emacs info files
     fish
     # fonts-firacode
     # fonts-hack
