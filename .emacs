@@ -14,7 +14,7 @@
    '(("gnu" . "http://elpa.gnu.org/packages/")
      ("melpa" . "https://melpa.org/packages/")))
  '(package-selected-packages
-   '(ace-jump-mode rainbow-delimiters fish-mode yaml-mode auto-package-update use-package poly-R mood-line sql-indent web-mode stan-mode smex smartparens multiple-cursors markdown-mode magit ess electric-operator cython-mode csv-mode auto-complete))
+   '(makefile-executor ace-jump-mode rainbow-delimiters fish-mode yaml-mode auto-package-update use-package poly-R mood-line sql-indent web-mode stan-mode smex smartparens multiple-cursors markdown-mode magit ess electric-operator cython-mode csv-mode auto-complete))
  '(save-place-mode t)
  '(scroll-bar-mode nil)
  '(split-height-threshold nil)
@@ -168,12 +168,8 @@
   (python-shell-interpreter "ipython3")
   (python-shell-interpreter-args "--simple-prompt --nosep"))
 
-;; good idea but it's too buggy for now
-;; (use-package makefile-executor
-;;   :hook (makefile-mode . makefile-executor-mode))
-;; ;; overwrite this function for now, the original one is broken
-;; (defun makefile-executor--project-root (&optional otherwise)
-;;   otherwise)
+(use-package makefile-executor
+  :hook (makefile-mode . makefile-executor-mode))
 
 ;; make lisp parentheses slightly more tolerable
 (use-package rainbow-delimiters
