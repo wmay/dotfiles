@@ -15,6 +15,7 @@
      ("melpa" . "https://melpa.org/packages/")))
  '(package-selected-packages
    '(ace-jump-mode rainbow-delimiters fish-mode yaml-mode auto-package-update use-package poly-R mood-line sql-indent web-mode stan-mode smex smartparens multiple-cursors markdown-mode magit ess electric-operator cython-mode csv-mode auto-complete))
+ '(save-place-mode t)
  '(scroll-bar-mode nil)
  '(split-height-threshold nil)
  '(split-width-threshold 140)
