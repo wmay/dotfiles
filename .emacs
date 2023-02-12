@@ -14,7 +14,7 @@
    '(("gnu" . "http://elpa.gnu.org/packages/")
      ("melpa" . "https://melpa.org/packages/")))
  '(package-selected-packages
-   '(makefile-executor ace-jump-mode rainbow-delimiters fish-mode yaml-mode auto-package-update use-package poly-R mood-line sql-indent web-mode stan-mode smex smartparens multiple-cursors markdown-mode magit ess electric-operator cython-mode csv-mode auto-complete))
+   '(engine-mode makefile-executor ace-jump-mode rainbow-delimiters fish-mode yaml-mode auto-package-update use-package poly-R mood-line sql-indent web-mode stan-mode smex smartparens multiple-cursors markdown-mode magit ess electric-operator cython-mode csv-mode auto-complete))
  '(save-place-mode t)
  '(scroll-bar-mode nil)
  '(split-height-threshold nil)
@@ -140,6 +140,13 @@
          ("C-x C-g" . magit-status))
   :custom
   (magit-bury-buffer-function 'magit-mode-quit-window))
+
+(use-package engine-mode
+  :config
+  (engine-mode t))
+(defengine google
+  "https://www.google.com/search?ie=utf-8&oe=utf-8&q=%s"
+  :keybinding "g")
 
 
 ;; Mode customizations
