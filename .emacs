@@ -1,3 +1,4 @@
+#!/usr/bin/emacs --script
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -64,8 +65,12 @@
 ;; mode, or theme). Otherwise it can miscalculate the number of columns!
 (modify-all-frames-parameters '((fullscreen . maximized)))
 
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 (require 'use-package)
-(setq use-package-compute-statistics 1)
+(setq use-package-compute-statistics 1
+      use-package-always-ensure t)
 
 (use-package auto-package-update
   :custom

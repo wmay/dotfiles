@@ -1,20 +1,13 @@
-Dotfiles focused on Ubuntu, data science, and Emacs.
-
-# Emacs
-
-## Language mode packages
-
-- csv-mode
-- cython-mode
-- ess (R/S+/Stata/etc.)
-- markdown-mode
-- poly-R (Rmarkdown)
-- sql-indent (decent SQL indentation)
-- stan-mode
-- web-mode
+Data science dotfiles and installation scripts for Ubuntu 22.04, Emacs, and
+fish. Mostly focused on R and related tools for now.
 
 ## Installation
 
+In theory you can run these from the command line:
+
 ```sh
-emacs --script install_packages.el
+./install_packages.sh # install system packages
+./.emacs # install emacs packages
+./install_packages.R # install R packages
+./install_dotfiles.sh # add symlinks to home folder
 ```

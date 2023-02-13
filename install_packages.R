@@ -1,3 +1,5 @@
+#!/usr/bin/Rscript
+
 dev_pkgs = c(
     "devtools",
     "pkgdown",
@@ -30,7 +32,8 @@ stats_pkgs = c(
     "mgcv",
     # "prophet",
     "rjags",
-    "rstan"
+    # stan is supposed to be installed with special compilation flags
+    # "rstan"
 )
 polisci_pkgs = c(
     "basicspace",
