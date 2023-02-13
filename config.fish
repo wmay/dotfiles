@@ -12,3 +12,7 @@ set -g DEBEMAIL "williamcmay@live.com"
 
 # make the R remotes package less annoying
 set -g R_REMOTES_UPGRADE "never"
+
+# Ruby exports
+set -gx GEM_HOME $HOME/gems
+fish_add_path $HOME/gems/bin
