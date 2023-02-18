@@ -123,16 +123,22 @@
   (ess-newline-and-indent)
   (previous-line)
   (indent-according-to-mode))
+(defun my-{-handler (&rest _ignored)
+  (if (eq (sp--get-context) 'code)
+      (my-create-newline-and-enter-sexp)))
 (use-package smartparens
   :custom
   (sp-highlight-pair-overlay nil)
   :config
   (smartparens-global-mode t)
-  (sp-local-pair 'ess-mode "{" nil :post-handlers '(my-create-newline-and-enter-sexp))
-  (sp-pair "'" nil :unless '(sp-point-after-word-p))
-  (sp-pair "\"" nil :unless '(sp-point-after-word-p))
-  (sp-pair "(" nil :unless '(sp-point-before-word-p))
-  (sp-pair "[" nil :unless '(sp-point-before-word-p)))
+  (sp-local-pair 'ess-mode "{" nil :post-handlers '(my-{-handler))
+  (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
+  (sp-pair "'" nil :unless '(sp-point-after-word-p sp-point-before-word-p
+			     sp-in-string-p))
+  (sp-pair "\"" nil :unless '(sp-point-after-word-p sp-point-before-word-p
+			      sp-in-string-p))
+  (sp-pair "(" nil :unless '(sp-point-before-word-p sp-point-before-same-p))
+  (sp-pair "[" nil :unless '(sp-point-before-word-p sp-point-before-same-p)))
 
 (use-package magit
   :bind (("C-x g" . magit-status)
