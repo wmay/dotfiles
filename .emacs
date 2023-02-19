@@ -118,6 +118,23 @@
 	 ("C-<" . mc/mark-previous-like-this)
 	 ("C-c C-<" . mc/mark-all-like-this)))
 
+;; make lisp parentheses more tolerable
+(require 'color)
+;; Brighten a color. `s` is the percent to increase saturation. `l` is the
+;; percent to increase luminance.
+(defun my-brighten-color (name s l)
+  (color-saturate-name 
+   (color-lighten-name name l) s))
+(use-package rainbow-delimiters
+  :hook (emacs-lisp-mode . rainbow-delimiters-mode)
+  :config
+  (dotimes (i rainbow-delimiters-max-face-count)
+    (let* ((face (intern (format "rainbow-delimiters-depth-%d-face" (+ i 1))))
+	   (new-color (my-brighten-color (face-foreground face) 50 4)))
+      (set-face-foreground face new-color))))
+
+;; after creating a closing bracket, automatically move it two lines down and
+;; end with the cursor on the previous line
 (defun my-create-newline-and-enter-sexp (&rest _ignored)
   (newline)
   (ess-newline-and-indent)
@@ -182,10 +199,6 @@
 
 (use-package makefile-executor
   :hook (makefile-mode . makefile-executor-mode))
-
-;; make lisp parentheses slightly more tolerable
-(use-package rainbow-delimiters
-  :hook (emacs-lisp-mode . rainbow-delimiters-mode))
 
 (use-package fish-mode
   :defer t)
