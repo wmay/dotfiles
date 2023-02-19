@@ -16,8 +16,11 @@
      ("melpa" . "https://melpa.org/packages/")))
  '(package-selected-packages
    '(engine-mode makefile-executor ace-jump-mode rainbow-delimiters fish-mode yaml-mode auto-package-update use-package poly-R mood-line sql-indent web-mode stan-mode smex smartparens multiple-cursors markdown-mode magit ess electric-operator cython-mode csv-mode auto-complete))
+ '(require-final-newline t)
  '(save-place-mode t)
  '(scroll-bar-mode nil)
+ '(show-paren-delay 0)
+ '(show-paren-mode t)
  '(split-height-threshold nil)
  '(split-width-threshold 140)
  '(tool-bar-mode nil)
@@ -44,8 +47,8 @@
 (dolist (command '(yank yank-pop))
   (eval `(defadvice ,command (after indent-region activate)
 	   (and (not current-prefix-arg)
-		;; not in an inferior process buffer
-		(not (string-prefix-p "inferior" (symbol-name major-mode)))
+		;; not in an inferior/shell ("command interpreter") buffer
+		(not (derived-mode-p 'comint-mode))
 		(let ((mark-even-if-inactive transient-mark-mode))
 		  (indent-region (region-beginning) (region-end) nil))))))
 ;; for unzipping files
