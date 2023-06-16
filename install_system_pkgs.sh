@@ -2,6 +2,11 @@
 # Set up an Ubuntu, or Ubuntu derivative, desktop
 # don't use sudo!!
 
+# Add the CRAN Ubuntu repository
+wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc |\
+    sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
+sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
+
 # install packages
 code_pkgs=(
     curl
@@ -20,6 +25,7 @@ code_pkgs=(
     valgrind
 )
 stats_pkgs=(
+    intel-mkl
     ipython3
     jags
     # julia # no apt repo? get from https://julialang.org/
@@ -85,9 +91,6 @@ sudo apt install ${code_pkgs[*]} ${stats_pkgs[*]} ${rdev_pkgs[*]} \
 
 tldr -u # get tldr entries
 
-# Emacs packages
-emacs --script install_packages.el
-
 # switch to fish shell and set up fish
 chsh -s `which fish`
 curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
@@ -100,3 +103,6 @@ fish -c "omf install ${omf_pkgs[*]}"
 # R packages
 sudo R CMD javareconf # for rJava
 sudo Rscript packages.R
+
+sudo update-alternatives --config libblas.so.3-x86_64-linux-gnu
+sudo update-alternatives --config liblapack.so.3-x86_64-linux-gnu

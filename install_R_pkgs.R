@@ -1,6 +1,7 @@
 #!/usr/bin/Rscript
 
 dev_pkgs = c(
+    "covr",
     "devtools",
     "pkgdown",
     "remotes",
@@ -32,7 +33,7 @@ stats_pkgs = c(
     "forecast",
     "mgcv",
     # "prophet",
-    "rjags",
+    "rjags"
     # "rstan" # requires special compilation flags
 )
 polisci_pkgs = c(
