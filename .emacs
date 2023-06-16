@@ -178,7 +178,9 @@
 
 (use-package ess
   :defer t
-  :hook ((ess-mode . (lambda () (ess-toggle-underscore nil)))
+  :hook (;; add waiting set-width function to set the width after starting an
+	 ;; inferior process
+	 ;; (ess-post-run . my-add-ess-window-hook)
 	 ;; remove exasperating double comment symbols
 	 (ess-r-mode . (lambda () (setq-local comment-add 0))))
   :custom
