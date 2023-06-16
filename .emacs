@@ -1,4 +1,5 @@
 #!/usr/bin/emacs --script
+nil ; just needed to keep customize from overwriting the top line
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -31,7 +32,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(show-paren-match ((t (:background "#6981b0"))))
+ '(show-paren-mismatch ((t (:background "dark violet" :foreground "white")))))
 
 ;; this can be removed in Emacs >=27, which is in Ubuntu 22.04
 (package-initialize)
@@ -99,6 +101,10 @@
 (use-package ace-jump-mode
   :bind ("C-c SPC" . ace-jump-mode))
 
+(use-package windmove
+  :config
+  (windmove-default-keybindings))
+
 (use-package auto-complete
   :config (ac-config-default)
   (global-auto-complete-mode t)
@@ -122,7 +128,8 @@
   :bind (("C-S-c C-S-c" . mc/edit-lines)
 	 ("C->" . mc/mark-next-like-this)
 	 ("C-<" . mc/mark-previous-like-this)
-	 ("C-c C-<" . mc/mark-all-like-this)))
+	 ("C-c C-<" . mc/mark-all-like-this))
+  :custom (mc/always-run-for-all t))
 
 ;; make lisp parentheses more tolerable
 (require 'color)
@@ -156,10 +163,8 @@
   (smartparens-global-mode t)
   (sp-local-pair 'ess-mode "{" nil :post-handlers '(my-{-handler))
   (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
-  (sp-pair "'" nil :unless '(sp-point-after-word-p sp-point-before-word-p
-			     sp-in-string-p))
-  (sp-pair "\"" nil :unless '(sp-point-after-word-p sp-point-before-word-p
-			      sp-in-string-p))
+  (sp-pair "'" nil :unless '(sp-point-after-word-p sp-point-before-word-p))
+  (sp-pair "\"" nil :unless '(sp-point-after-word-p sp-point-before-word-p))
   (sp-pair "(" nil :unless '(sp-point-before-word-p sp-point-before-same-p))
   (sp-pair "[" nil :unless '(sp-point-before-word-p sp-point-before-same-p)))
 
@@ -240,3 +245,96 @@
 
 (use-package csv-mode
   :defer t)
+
+;; This is all some cruft left over from debugging an ESS issue,
+;; https://github.com/emacs-ess/ESS/issues/1243, and I'll remove it after I
+;; verify that it's not needed (may be a while):
+
+;; (ess-eval-linewise (format ess-setwd-command lpath))
+
+;; (ess-eval-linewise "1+1" nil nil nil 'wait-prompt)
+
+;; (ess-eval-linewise "x=6" t)
+
+;; (ess-eval-linewise "y=5" t)
+
+;; (ess-command "y=6\\n")
+
+;; (ess-command "message('it ran')
+;; ")
+
+;; (ess-command "options(width=98, length=99999)\\n")
+
+;; (ess-eval-linewise (ess-calculate-width ess-auto-width))
+
+;; (defun ess-set-width ()
+;;   "Set the width option.
+;; A part of `window-configuration-change-hook' in inferior ESS
+;; buffers."
+;;   (when (and ess-auto-width
+;;              ess-execute-screen-options-command)
+;;     ;; `window-configuration-change-hook' runs with the window selected.
+;;     (let ((proc (get-buffer-process (window-buffer)))
+;;           command)
+;;       ;; TODO: Set the width once the process is no longer busy.
+;;       (when (and (process-live-p proc)
+;;                  (not (process-get proc 'busy)))
+;;         (setq command (ess-calculate-width ess-auto-width))
+;;         (if ess-auto-width-visible
+;;             (ess-eval-linewise command nil nil nil 'wait-prompt)
+;;           (ess-command command))))))
+
+;; (defun ess-set-working-directory (path &optional no-error)
+;;   "Set the current working to PATH for the ESS buffer and iESS process.
+;; NO-ERROR prevents errors when this has not been implemented for
+;; `ess-dialect'."
+;;   (interactive "DChange working directory to: ")
+;;   (if ess-setwd-command
+;;       (let* ((remote (file-remote-p path))
+;;              (path (if remote
+;;                        (progn
+;;                          (require 'tramp-sh)
+;;                          (tramp-sh-handle-expand-file-name path))
+;;                      path))
+;;              (lpath (if remote
+;;                         (with-parsed-tramp-file-name path v v-localname)
+;;                       path)))
+;;         (ess-eval-linewise (format ess-setwd-command lpath))
+;;         (ess-set-process-variable 'default-directory
+;;                                   (file-name-as-directory path)))
+;;     (unless no-error
+;;       (error "Not implemented for dialect %s" ess-dialect))))
+
+;; (defun my-ess-set-width ()
+;;   "Set the width option.
+;; A part of `window-configuration-change-hook' in inferior ESS
+;; buffers."
+;;   (when (and ess-auto-width
+;;              ess-execute-screen-options-command)
+;;     ;; `window-configuration-change-hook' runs with the window selected.
+;;     (let ((proc (get-buffer-process (window-buffer)))
+;;           command)
+;;       ;; TODO: Set the width once the process is no longer busy.
+;;       (progn
+;;         (setq command (ess-calculate-width ess-auto-width))
+;;         (if ess-auto-width-visible
+;;             (ess-eval-linewise command nil nil nil 'wait-prompt)
+;;           (ess-command command))))))
+
+(defun my-get-window-info (location)
+  (message "Running from %s:" location)
+  (message "`get-buffer-window` returns %s" (get-buffer-window)))
+;; (defun my-ess-wait-then-set-width ()
+;;   "Workaround for https://github.com/emacs-ess/ESS/issues/1243.
+;; Add a wait before calling `ess-set-width' from
+;; `window-configuration-change-hook', that way the width can still
+;; get set if the R process is briefly busy."
+;;   (let ((proc (get-buffer-process (window-buffer))))
+;;     (when (and (process-live-p proc)
+;;                (process-get proc 'busy))
+;; 	;; wait for at most .2 seconds if the process is busy
+;; 	(when (ess-wait-for-process proc nil nil nil .2)
+;; 	  (ess-set-width)))))
+;; (defun my-add-ess-window-hook ()
+;;   ;; (my-get-window-info "ess-r-post-run-hook")
+;;   (add-hook 'window-configuration-change-hook #'my-ess-wait-then-set-width nil t))
