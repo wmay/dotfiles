@@ -49,6 +49,9 @@
 	   (and (not current-prefix-arg)
 		;; not in an inferior/shell ("command interpreter") buffer
 		(not (derived-mode-p 'comint-mode))
+		;; SQL interactive mode is (bizarrely) not derived from
+		;; comint-mode
+		(not (eq major-mode 'sql-interactive-mode))
 		(let ((mark-even-if-inactive transient-mark-mode))
 		  (indent-region (region-beginning) (region-end) nil))))))
 ;; for unzipping files
