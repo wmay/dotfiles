@@ -1,12 +1,11 @@
 options(Ncpus = parallel::detectCores(), warn = 1)
 # Based on the cool example at ?Startup:
 local({
-  # set CRAN mirror
-  r = getOption("repos")
-  r["CRAN"] = "https://cloud.r-project.org"
-  options(repos = r)
+  # set CRAN mirror (see
+  # https://packagemanager.rstudio.com/client/#/repos/2/overview)
+  options(repos = c(posit = 'https://packagemanager.rstudio.com/cran/__linux__/jammy/latest'))
   # set the width from COLUMNS if set
-  cols = Sys.getenv("COLUMNS")
+  cols = Sys.getenv('COLUMNS')
   if (nzchar(cols)) options(width = as.integer(cols))
 })
 
