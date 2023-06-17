@@ -20,6 +20,7 @@ nil ; just needed to keep customize from overwriting the top line
  '(require-final-newline t)
  '(save-place-mode t)
  '(scroll-bar-mode nil)
+ '(sentence-end-double-space nil)
  '(show-paren-delay 0)
  '(show-paren-mode t)
  '(split-height-threshold nil)
