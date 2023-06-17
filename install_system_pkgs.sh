@@ -7,6 +7,19 @@ wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc |\
     sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
 sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
 
+# The snap version of firefox that comes with ubuntu is ridiculously overzealous
+# about security, not allowing firefox to open files in the /tmp folder (needed
+# for viewing html plots). See https://bugs.launchpad.net/snapd/+bug/1972762.
+# The Ubuntu Mozilla team provides a .deb version
+sudo snap remove firefox
+sudo add-apt-repository ppa:mozillateam/ppa
+# prioritize the .deb version
+echo '
+Package: *
+Pin: release o=LP-PPA-mozillateam
+Pin-Priority: 1001
+' | sudo tee /etc/apt/preferences.d/mozilla-firefox
+
 # install packages
 code_pkgs=(
     curl
