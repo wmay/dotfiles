@@ -114,6 +114,10 @@ omf_pkgs=(
 )
 fish -c "omf install ${omf_pkgs[*]}"
 
+# set up ssh key
+ssh-keygen -t ed25519 -C "wmay@hey.com"
+ssh-add ~/.ssh/id_ed25519
+
 # R packages
 sudo R CMD javareconf # for rJava
 sudo Rscript packages.R
