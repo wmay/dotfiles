@@ -24,7 +24,7 @@ nil ; just needed to keep customize from overwriting the top line
  '(show-paren-delay 0)
  '(show-paren-mode t)
  '(split-height-threshold nil)
- '(split-width-threshold 140)
+ '(split-width-threshold 160)
  '(tool-bar-mode nil)
  '(truncate-lines nil)
  '(visible-bell t))
