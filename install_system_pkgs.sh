@@ -46,6 +46,7 @@ stats_pkgs=(
     jupyter
     libopenblas64-0-serial
     python3-pip
+    python3-venv
     r-recommended r-base-dev
     sqlite3
     # wxmaxima maxima-emacs
