@@ -1,6 +1,7 @@
 options(Ncpus = parallel::detectCores(), warn = 1)
 # Based on the cool example at ?Startup:
 local({
+  options(max.print = 400)
   # set CRAN mirror. See
   # https://packagemanager.rstudio.com/client/#/repos/2/overview
   options(repos = c(posit = 'https://packagemanager.rstudio.com/cran/__linux__/jammy/latest'))
