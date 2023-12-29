@@ -68,6 +68,10 @@ nil ; just needed to keep customize from overwriting the top line
 ;; mode, or theme). Otherwise it can miscalculate the number of columns!
 (modify-all-frames-parameters '((fullscreen . maximized)))
 
+;; fix sftp file saving. See the emacs etc/PROBLEMS file
+(dir-locals-set-class-variables 'gvfs '((nil . ((create-lockfiles . nil)))))
+(dir-locals-set-directory-class (format "/run/user/%d/gvfs" (user-uid)) 'gvfs)
+
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
