@@ -11,3 +11,4 @@ ln -sf ${BASEDIR}/.emacs ~/.emacs
 ln -sf ${BASEDIR}/config.fish ~/.config/fish/config.fish
 ln -sf ${BASEDIR}/.Rprofile ~/.Rprofile
 ln -sf ${BASEDIR}/.hidden ~/.hidden
+ln -sf ${BASEDIR}/.ipython/profile_default/startup/startup.ipy ~/.ipython/profile_default/startup/startup.ipy

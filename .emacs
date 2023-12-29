@@ -211,6 +211,7 @@ nil ; just needed to keep customize from overwriting the top line
 
 (use-package python
   :defer t
+  :mode ("\\.i?py\\'" . python-mode)
   :custom
   (python-shell-interpreter "ipython3")
   (python-shell-interpreter-args "--simple-prompt --nosep"))
