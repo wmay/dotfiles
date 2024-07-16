@@ -43,6 +43,7 @@ code_pkgs=(
     valgrind
 )
 stats_pkgs=(
+    graphviz
     intel-mkl
     ipython3
     jags
