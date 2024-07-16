@@ -16,7 +16,7 @@ nil ; just needed to keep customize from overwriting the top line
    '(("gnu" . "http://elpa.gnu.org/packages/")
      ("melpa" . "https://melpa.org/packages/")))
  '(package-selected-packages
-   '(engine-mode makefile-executor ace-jump-mode rainbow-delimiters fish-mode yaml-mode auto-package-update use-package poly-R mood-line sql-indent web-mode stan-mode smex smartparens multiple-cursors markdown-mode magit ess electric-operator cython-mode csv-mode auto-complete))
+   '(gnu-elpa-keyring-update engine-mode makefile-executor ace-jump-mode rainbow-delimiters fish-mode yaml-mode auto-package-update use-package poly-R mood-line sql-indent web-mode stan-mode smex smartparens multiple-cursors markdown-mode magit ess electric-operator cython-mode csv-mode auto-complete))
  '(require-final-newline t)
  '(save-place-mode t)
  '(scroll-bar-mode nil)
