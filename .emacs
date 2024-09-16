@@ -204,7 +204,8 @@ nil ; just needed to keep customize from overwriting the top line
   (ess-style 'GNU)
   (ess-ask-for-ess-directory nil)
   (ess-indent-with-fancy-comments nil)
-  (ess-auto-width -1))
+  (ess-auto-width -1)
+  (ess-startup-directory 'default-directory))
 
 (use-package poly-R
   :defer t)
