@@ -10,20 +10,19 @@ sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_
 # The snap version of firefox that comes with ubuntu is ridiculously overzealous
 # about security, not allowing firefox to open files in the /tmp folder (needed
 # for viewing html plots). See https://bugs.launchpad.net/snapd/+bug/1972762.
-# The Ubuntu Mozilla team provides a .deb version
-sudo snap remove firefox
-sudo add-apt-repository ppa:mozillateam/ppa
+# Mozilla provides a debian repo. Following
+# https://support.mozilla.org/en-US/kb/install-firefox-linux:
+sudo apt remove firefox && sudo snap remove firefox
+sudo install -d -m 0755 /etc/apt/keyrings
+wget -q https://packages.mozilla.org/apt/repo-signing-key.gpg -O- | sudo tee /etc/apt/keyrings/packages.mozilla.org.asc > /dev/null
+echo "deb [signed-by=/etc/apt/keyrings/packages.mozilla.org.asc] https://packages.mozilla.org/apt mozilla main" | sudo tee -a /etc/apt/sources.list.d/mozilla.list > /dev/null
 # prioritize the .deb version
 echo '
 Package: *
-Pin: release o=LP-PPA-mozillateam
-Pin-Priority: 1001
-
-Package: firefox
-Pin: version 1:1snap1-0ubuntu2
-Pin-Priority: -1
-' | sudo tee /etc/apt/preferences.d/mozilla-firefox
-sudo apt install firefox
+Pin: origin packages.mozilla.org
+Pin-Priority: 1000
+' | sudo tee /etc/apt/preferences.d/mozilla 
+sudo apt update && sudo install firefox
 
 # install packages
 code_pkgs=(
