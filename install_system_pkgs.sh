@@ -2,42 +2,60 @@
 # Set up an Ubuntu, or Ubuntu derivative, desktop
 # don't use sudo!!
 
-# Add the CRAN Ubuntu repository. Following
-# https://cran.r-project.org/bin/linux/ubuntu/
-sudo apt update -qq
-sudo apt install --no-install-recommends software-properties-common dirmngr
-wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc |\
-    sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
-sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
+# Adding repositories
 
-# The snap version of firefox that comes with ubuntu is ridiculously overzealous
-# about security, not allowing firefox to open files in the /tmp folder (needed
-# for viewing html plots). See https://bugs.launchpad.net/snapd/+bug/1972762.
-# Mozilla provides a debian repo. Following
-# https://support.mozilla.org/en-US/kb/install-firefox-linux:
-sudo apt remove firefox && sudo snap remove firefox
+sudo apt update -qq
 sudo install -d -m 0755 /etc/apt/keyrings
-wget -q https://packages.mozilla.org/apt/repo-signing-key.gpg -O- | sudo tee /etc/apt/keyrings/packages.mozilla.org.asc > /dev/null
-echo "deb [signed-by=/etc/apt/keyrings/packages.mozilla.org.asc] https://packages.mozilla.org/apt mozilla main" | sudo tee -a /etc/apt/sources.list.d/mozilla.list > /dev/null
-# prioritize the .deb version
+
+# Firefox. The snap version of firefox that comes with ubuntu is ridiculously
+# overzealous about security, not allowing firefox to open files in the /tmp
+# folder (needed for viewing html plots). See
+# https://bugs.launchpad.net/snapd/+bug/1972762.
+# https://support.mozilla.org/en-US/kb/install-firefox-linux
+sudo apt remove firefox && sudo snap remove firefox
+wget -qO https://packages.mozilla.org/apt/repo-signing-key.gpg -O- |\
+    sudo tee /etc/apt/keyrings/packages.mozilla.org.asc > /dev/null
+echo "deb [signed-by=/etc/apt/keyrings/packages.mozilla.org.asc] https://packages.mozilla.org/apt mozilla main" |\
+    sudo tee -a /etc/apt/sources.list.d/mozilla.list > /dev/null
 echo '
 Package: *
 Pin: origin packages.mozilla.org
 Pin-Priority: 1000
-' | sudo tee /etc/apt/preferences.d/mozilla 
-sudo apt update && sudo install firefox
+
+Package: firefox
+Pin: version 1:1snap1-0ubuntu5
+Pin-Priority: -1
+' | sudo tee /etc/apt/preferences.d/mozilla
+# R/CRAN: https://cran.r-project.org/bin/linux/ubuntu/
+sudo apt install --no-install-recommends software-properties-common dirmngr
+wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc |\
+    sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc > /dev/null
+sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
+# Spotify: https://www.spotify.com/us/download/linux/
+curl -sS https://download.spotify.com/debian/pubkey_6224F9941A8AA6D1.gpg |\
+    sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
+echo "deb http://repository.spotify.com stable non-free" |\
+    sudo tee /etc/apt/sources.list.d/spotify.list
+# Zoom: https://github.com/mwt/zoom-apt-repo
+wget -qO- https://mirror.mwt.me/zoom/gpgkey |\
+    sudo tee /etc/apt/keyrings/mwt.asc > /dev/null
+echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/mwt.asc by-hash=force] https://mirror.mwt.me/zoom/deb any main" |\
+    sudo tee /etc/apt/sources.list.d/mwt.list
+# Zotero: https://github.com/retorquere/zotero-deb
+wget -qO- https://raw.githubusercontent.com/retorquere/zotero-deb/master/zotero-archive-keyring.gpg |\
+    sudo tee /usr/share/keyrings/zotero-archive-keyring.gpg > /dev/null
+echo "deb [signed-by=/usr/share/keyrings/zotero-archive-keyring.gpg by-hash=force] https://zotero.retorque.re/file/apt-package-archive ./" |\
+    sudo tee /etc/apt/sources.list.d/zotero.list
 
 # install packages
 code_pkgs=(
     curl
     default-jdk
-    emacs
-    emacs-common-non-dfsg # emacs info files
+    emacs emacs-common-non-dfsg # emacs info files
     fish
     # fonts-firacode
     # fonts-hack
-    gcc
-    gfortran
+    gcc gfortran
     git
     make
     powerline
@@ -52,8 +70,8 @@ stats_pkgs=(
     # julia # no apt repo? get from https://julialang.org/
     jupyter
     libopenblas64-0-serial
-    python3-pip
-    python3-venv
+    libudunits2-0
+    python3-pip python3-venv
     r-recommended r-base-dev
     sqlite3
     # wxmaxima maxima-emacs
@@ -69,18 +87,19 @@ rdev_pkgs=(
     texlive-fonts-extra # for inconsolata.sty
 )
 research_pkgs=(
-    texlive-latex-recommended
-    texlive-publishers
-    pandoc pandoc-citeproc
-    # zotero # get it from https://github.com/retorquere/zotero-deb
+    texlive-latex-recommended texlive-publishers
+    pandoc
+    zotero
+    libreoffice-java-common # for zotero connector
 )
-# spatial_pkgs=(
-#     libgdal-dev
-#     libproj-dev
-#     libgeos-dev
-#     # qgis
-# )
+spatial_pkgs=(
+    libgdal-dev
+    libproj-dev
+    libgeos-dev
+    # qgis
+)
 util_pkgs=(
+    firefox
     # evolution evolution-ews
     gir1.2-gtop-2.0 gir1.2-nm-1.0 gir1.2-clutter-1.0 gnome-system-monitor # for system-monitor extension
     gnome-shell-extension-gsconnect-browsers
@@ -89,10 +108,11 @@ util_pkgs=(
     libdvd-pkg
     lm-sensors # for Freon extension
     network-manager-openconnect-gnome # alternative to GlobalProtect
-    pinta # simple image editing program
-    # spotify-client # get it from https://www.spotify.com/us/download/linux/
+    # pinta # simple image editing program -- snap/flatpak only
+    spotify-client
     ubuntu-restricted-extras
     vlc
+    zoom
 )
 # android_pkgs=(
 #     adb
@@ -121,6 +141,9 @@ omf_pkgs=(
     pisces
 )
 fish -c "omf install ${omf_pkgs[*]}"
+# Note: the powerline characters may be broken in Ubuntu Sans Mono (the ubuntu
+# default), but work with Ubuntu Mono. See
+# https://github.com/powerline/powerline/issues/2264
 
 # set up ssh key
 ssh-keygen -t ed25519 -C "wmay@hey.com"
