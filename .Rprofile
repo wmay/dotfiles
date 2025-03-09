@@ -4,7 +4,10 @@ local({
   options(max.print = 400)
   # set CRAN mirror. See
   # https://packagemanager.rstudio.com/client/#/repos/2/overview
-  options(repos = c(posit = 'https://packagemanager.rstudio.com/cran/__linux__/jammy/latest'))
+  ubuntu_codename = system2('lsb_release', '-cs', stdout = TRUE)
+  posit_repo = paste0('https://packagemanager.rstudio.com/cran/__linux__/',
+                      ubuntu_codename, '/latest')
+  options(repos = c(posit = posit_repo))
   # Get linux binary packages. See
   # https://docs.posit.co/rspm/admin/serving-binaries/#binary-user-agents
   options(HTTPUserAgent = sprintf("R/%s R (%s)", getRversion(),
