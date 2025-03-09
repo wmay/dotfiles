@@ -26,6 +26,7 @@ util_pkgs = c(
     "RSQLite",
     "rticles",
     "rvest",
+    "sf",
     "shiny",
     "tidyverse"
 )
