@@ -16,7 +16,7 @@ nil ; just needed to keep customize from overwriting the top line
    '(("gnu" . "http://elpa.gnu.org/packages/")
      ("melpa" . "https://melpa.org/packages/")))
  '(package-selected-packages
-   '(gnu-elpa-keyring-update engine-mode makefile-executor ace-jump-mode rainbow-delimiters fish-mode yaml-mode auto-package-update use-package poly-R mood-line sql-indent web-mode stan-mode smex smartparens multiple-cursors markdown-mode magit ess electric-operator cython-mode csv-mode auto-complete))
+   '(copilot quelpa-use-package gnu-elpa-keyring-update engine-mode makefile-executor ace-jump-mode rainbow-delimiters fish-mode yaml-mode auto-package-update use-package poly-R mood-line sql-indent web-mode stan-mode smex smartparens multiple-cursors markdown-mode magit ess electric-operator cython-mode csv-mode auto-complete))
  '(require-final-newline t)
  '(save-place-mode t)
  '(scroll-bar-mode nil)
@@ -88,8 +88,19 @@ nil ; just needed to keep customize from overwriting the top line
   :config
   (auto-package-update-maybe))
 
+(use-package quelpa)
+(use-package quelpa-use-package)
+
 
 ;; Editing
+
+(use-package copilot
+  :quelpa (copilot :fetcher github
+                   :repo "copilot-emacs/copilot.el"
+                   :branch "main"
+                   :files ("*.el")))
+(add-hook 'prog-mode-hook 'copilot-mode)
+(define-key copilot-completion-map (kbd "C-<tab>") 'copilot-accept-completion)
 
 (use-package ido
   :config
