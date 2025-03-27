@@ -13,7 +13,7 @@ sudo install -d -m 0755 /etc/apt/keyrings
 # https://bugs.launchpad.net/snapd/+bug/1972762.
 # https://support.mozilla.org/en-US/kb/install-firefox-linux
 sudo apt remove firefox && sudo snap remove firefox
-wget -qO https://packages.mozilla.org/apt/repo-signing-key.gpg -O- |\
+wget -qO- https://packages.mozilla.org/apt/repo-signing-key.gpg |\
     sudo tee /etc/apt/keyrings/packages.mozilla.org.asc > /dev/null
 echo "deb [signed-by=/etc/apt/keyrings/packages.mozilla.org.asc] https://packages.mozilla.org/apt mozilla main" |\
     sudo tee -a /etc/apt/sources.list.d/mozilla.list > /dev/null
@@ -32,7 +32,7 @@ wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc |\
     sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc > /dev/null
 sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
 # Spotify: https://www.spotify.com/us/download/linux/
-curl -sS https://download.spotify.com/debian/pubkey_6224F9941A8AA6D1.gpg |\
+curl -sS https://download.spotify.com/debian/pubkey_C85668DF69375001.gpg |\
     sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
 echo "deb http://repository.spotify.com stable non-free" |\
     sudo tee /etc/apt/sources.list.d/spotify.list
