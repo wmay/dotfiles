@@ -280,6 +280,7 @@ is available. Useful if you tend to hammer your keys like I do."
 (use-package poly-R
   :defer t)
 
+;; https://ipython.readthedocs.io/en/stable/config/details.html#x-emacs
 (use-package python
   :defer t
   :mode ("\\.i?py\\'" . python-mode)
