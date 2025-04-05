@@ -14,21 +14,22 @@ set -g DEBEMAIL "williamcmay@live.com"
 # make the R remotes package less annoying
 set -g R_REMOTES_UPGRADE "never"
 
+# keep python venv from mucking up the prompt
+set -g VIRTUAL_ENV_DISABLE_PROMPT 1
+
 # Ruby exports
 set -gx GEM_HOME $HOME/gems
 fish_add_path $HOME/gems/bin
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-if test -f /home/will/miniforge3/bin/conda
-    eval /home/will/miniforge3/bin/conda "shell.fish" "hook" $argv | source
+if test -f $HOME/miniforge3/bin/conda
+    eval $HOME/miniforge3/bin/conda "shell.fish" "hook" $argv | source
 else
-    if test -f "/home/will/miniforge3/etc/fish/conf.d/conda.fish"
-        . "/home/will/miniforge3/etc/fish/conf.d/conda.fish"
+    if test -f "$HOME/miniforge3/etc/fish/conf.d/conda.fish"
+        . "$HOME/miniforge3/etc/fish/conf.d/conda.fish"
     else
-        set -x PATH "/home/will/miniforge3/bin" $PATH
+        set -x PATH "$HOME/miniforge3/bin" $PATH
     end
 end
 # <<< conda initialize <<<
-
-conda config --set changeps1 False

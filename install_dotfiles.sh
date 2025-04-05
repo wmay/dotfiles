@@ -14,3 +14,4 @@ ln -sf ${BASEDIR}/.Rprofile ~/.Rprofile
 ln -sf ${BASEDIR}/.hidden ~/.hidden
 ln -sf ${BASEDIR}/.ipython/profile_default/ipython_config.py ~/.ipython/profile_default/ipython_config.py
 ln -sf ${BASEDIR}/.ipython/profile_default/startup/startup.ipy ~/.ipython/profile_default/startup/startup.ipy
+ln -sf ${BASEDIR}/.condarc ~/.condarc
