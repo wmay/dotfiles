@@ -9,7 +9,7 @@ ln -sf ${BASEDIR}/.gitconfig ~/.gitconfig
 mkdir -p .config/git
 ln -sf ${BASEDIR}/.config/git/ignore ~/.config/git/ignore
 ln -sf ${BASEDIR}/.emacs ~/.emacs
-ln -sf ${BASEDIR}/config.fish ~/.config/fish/config.fish
+ln -sf ${BASEDIR}/.config/fish/config.fish ~/.config/fish/config.fish
 ln -sf ${BASEDIR}/.Rprofile ~/.Rprofile
 ln -sf ${BASEDIR}/.hidden ~/.hidden
 ln -sf ${BASEDIR}/.ipython/profile_default/ipython_config.py ~/.ipython/profile_default/ipython_config.py
