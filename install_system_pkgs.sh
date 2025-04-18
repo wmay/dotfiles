@@ -46,6 +46,11 @@ wget -qO- https://raw.githubusercontent.com/retorquere/zotero-deb/master/zotero-
     sudo tee /usr/share/keyrings/zotero-archive-keyring.gpg > /dev/null
 echo "deb [signed-by=/usr/share/keyrings/zotero-archive-keyring.gpg by-hash=force] https://zotero.retorque.re/file/apt-package-archive ./" |\
     sudo tee /etc/apt/sources.list.d/zotero.list
+# Kubernetes
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.32/deb/Release.key |\
+    sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.32/deb/ /' |\
+    sudo tee /etc/apt/sources.list.d/kubernetes.list
 
 # install packages
 code_pkgs=(
@@ -57,6 +62,7 @@ code_pkgs=(
     # fonts-hack
     gcc gfortran
     git
+    kubectl
     make
     powerline
     tldr

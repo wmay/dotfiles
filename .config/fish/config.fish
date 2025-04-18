@@ -21,6 +21,8 @@ set -g VIRTUAL_ENV_DISABLE_PROMPT 1
 set -gx GEM_HOME $HOME/gems
 fish_add_path $HOME/gems/bin
 
+kubectl completion fish | source
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 if test -f $HOME/miniforge3/bin/conda
