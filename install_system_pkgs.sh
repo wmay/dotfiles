@@ -46,6 +46,13 @@ wget -qO- https://raw.githubusercontent.com/retorquere/zotero-deb/master/zotero-
     sudo tee /usr/share/keyrings/zotero-archive-keyring.gpg > /dev/null
 echo "deb [signed-by=/usr/share/keyrings/zotero-archive-keyring.gpg by-hash=force] https://zotero.retorque.re/file/apt-package-archive ./" |\
     sudo tee /etc/apt/sources.list.d/zotero.list
+# Docker
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+echo \
+    "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
+    sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 # Kubernetes
 curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.32/deb/Release.key |\
     sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
@@ -56,6 +63,7 @@ echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.
 code_pkgs=(
     curl
     default-jdk
+    docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
     emacs emacs-common-non-dfsg # emacs info files
     fish
     # fonts-firacode
