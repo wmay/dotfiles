@@ -7,6 +7,8 @@ set -g theme_color_scheme base16-dark
 set -g theme_date_timezone America/New_York
 set -g theme_nerd_fonts yes
 
+set -gx EDITOR emacs
+
 # package dev
 set -g DEBFULLNAME "William May"
 set -g DEBEMAIL "williamcmay@live.com"
