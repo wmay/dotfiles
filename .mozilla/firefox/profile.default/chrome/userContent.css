@@ -1,0 +1,4 @@
+/* remove an annoying flashy sidebar from the weather channel */
+@-moz-document domain(weather.com) {
+    aside[aria-label="Sidebar"] { visibility: hidden; !important; }
+}
