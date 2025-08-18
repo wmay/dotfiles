@@ -3,7 +3,7 @@ options(Ncpus = parallel::detectCores(), warn = 1)
 local({
   options(max.print = 400)
   # set CRAN mirror. See
-  # https://packagemanager.rstudio.com/client/#/repos/2/overview
+  # https://packagemanager.posit.co/client/#/repos/cran/setup
   ubuntu_codename = system2('lsb_release', '-cs', stdout = TRUE)
   posit_repo = paste0('https://packagemanager.rstudio.com/cran/__linux__/',
                       ubuntu_codename, '/latest')
