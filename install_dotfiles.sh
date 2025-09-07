@@ -18,3 +18,5 @@ ln -sf ${BASEDIR}/.condarc ~/.condarc
 FIREFOX_PROFILE_DIR=$(find ~/.mozilla/firefox -name '*.default-release' -type d | head -n 1)
 mkdir -p ${FIREFOX_PROFILE_DIR}/chrome
 ln -sf ${BASEDIR}/.mozilla/firefox/profile.default/chrome/userContent.css ${FIREFOX_PROFILE_DIR}/chrome/userContent.css
+ln -sf ${BASEDIR}/Templates/beamer.Rmd ~/Templates/beamer.Rmd
+ln -sf ${BASEDIR}/Templates/new.txt ~/Templates/new.txt

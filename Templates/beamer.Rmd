@@ -1,0 +1,19 @@
+---
+title: "Title"
+author: "William May"
+date: "August 4th, 2025"
+output:
+  beamer_presentation:
+    theme: "CambridgeUS"
+    colortheme: "seahorse"
+    toc: true
+    slide_level: 2
+urlcolor: blue
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+opts_chunk$set(echo = FALSE)
+```
+
+# References {.allowframebreaks}
