@@ -1,4 +1,4 @@
-options(Ncpus = parallel::detectCores(), warn = 1)
+options(Ncpus = parallel::detectCores())
 # Based on the cool example at ?Startup:
 local({
   options(max.print = 400)
