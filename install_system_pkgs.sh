@@ -23,7 +23,7 @@ Pin: origin packages.mozilla.org
 Pin-Priority: 1000
 
 Package: firefox
-Pin: version 1:1snap1-0ubuntu5
+Pin: release o=Ubuntu*
 Pin-Priority: -1
 ' | sudo tee /etc/apt/preferences.d/mozilla
 # R/CRAN: https://cran.r-project.org/bin/linux/ubuntu/
@@ -58,6 +58,9 @@ curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.32/deb/Release.key |\
     sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.32/deb/ /' |\
     sudo tee /etc/apt/sources.list.d/kubernetes.list
+
+# important that this is run before installing packages, to set up the new repos
+sudo apt update -qq
 
 # install packages
 code_pkgs=(
