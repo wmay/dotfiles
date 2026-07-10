@@ -81,14 +81,14 @@ code_pkgs=(
 )
 stats_pkgs=(
     graphviz
-    intel-mkl
+    # intel-mkl
     ipython3
     jags
     # julia # no apt repo? get from https://julialang.org/
     jupyter
     libopenblas64-0-serial
     libudunits2-0
-    python3-pip python3-venv
+    python3-pip python3-venv pipx
     r-recommended r-base-dev
     sqlite3
     # wxmaxima maxima-emacs
@@ -123,13 +123,13 @@ util_pkgs=(
     gnome-shell-extension-gsconnect-browsers
     gnome-shell-extension-manager
     # gnome-tweaks
-    libdvd-pkg
+    # libdvd-pkg
     lm-sensors # for Freon extension
     network-manager-openconnect-gnome # alternative to GlobalProtect
     # pinta # simple image editing program -- snap/flatpak only
     spotify-client
     ubuntu-restricted-extras
-    vlc
+    # vlc
     zoom
 )
 # android_pkgs=(
@@ -149,6 +149,8 @@ sudo apt install ${code_pkgs[*]} ${stats_pkgs[*]} ${rdev_pkgs[*]} \
 
 # Some setup afterward (probably need a makefile)
 
+pipx install hatch # for python package dev
+pipx install tldr
 tldr -u # get tldr entries
 
 # switch to fish shell and set up fish
@@ -162,6 +164,7 @@ fish -c "omf install ${omf_pkgs[*]}"
 # Note: the powerline characters may be broken in Ubuntu Sans Mono (the ubuntu
 # default), but work with Ubuntu Mono. See
 # https://github.com/powerline/powerline/issues/2264
+# To fix, edit /etc/fonts/conf.avail/10-powerline-symbols.conf
 
 # set up ssh key
 ssh-keygen -t ed25519 -C "wmay@hey.com"
