@@ -1,4 +1,4 @@
-Data science dotfiles and installation scripts for Ubuntu 24.04, Emacs, and
+Data science dotfiles and installation scripts for Ubuntu 26.04, Emacs, and
 fish. Mostly focused on R and related tools for now.
 
 ## Installation
