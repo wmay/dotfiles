@@ -7,8 +7,8 @@ In theory you can run these from the command line (but it's probably wiser to
 just run them piecemeal instead).
 
 ```sh
-./install_system_pkgs.sh
+./scripts/install_system_pkgs.sh
 ./.emacs # install emacs packages
-./install_R_pkgs.R
-./install_dotfiles.sh # add symlinks to home folder
+./scripts/install_R_pkgs.R
+./scripts/install_dotfiles.sh # add symlinks to home folder
 ```
