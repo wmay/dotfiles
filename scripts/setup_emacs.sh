@@ -6,7 +6,7 @@ code_pkgs=(
 
 sudo apt install ${code_pkgs[*]}
 
-./.emacs # install emacs packages
+./dotfiles/.emacs # install emacs packages
 
 # following the example at
 # https://www.anishathalye.com/2014/08/03/managing-your-dotfiles/
