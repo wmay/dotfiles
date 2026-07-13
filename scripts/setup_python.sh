@@ -15,9 +15,7 @@ pipx install hatch # for python package dev
 
 # following the example at
 # https://www.anishathalye.com/2014/08/03/managing-your-dotfiles/
-
-BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
+BASEDIR="$(pwd)/dotfiles"
 ln -sf ${BASEDIR}/.ipython/profile_default/ipython_config.py ~/.ipython/profile_default/ipython_config.py
 ln -sf ${BASEDIR}/.ipython/profile_default/startup/startup.ipy ~/.ipython/profile_default/startup/startup.ipy
 ln -sf ${BASEDIR}/.condarc ~/.condarc

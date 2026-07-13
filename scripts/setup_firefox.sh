@@ -28,7 +28,7 @@ sudo apt install chrome-gnome-shell # for gnome extensions browser support
 
 # following the example at
 # https://www.anishathalye.com/2014/08/03/managing-your-dotfiles/
-BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+BASEDIR="$(pwd)/dotfiles"
 FIREFOX_PROFILE_DIR=$(find ~/.config/mozilla/firefox -name '*.default-release' -type d | head -n 1)
 mkdir -p ${FIREFOX_PROFILE_DIR}/chrome
 ln -sf ${BASEDIR}/mozilla/firefox/profile.default/chrome/userContent.css ${FIREFOX_PROFILE_DIR}/chrome/userContent.css

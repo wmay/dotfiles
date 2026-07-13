@@ -100,7 +100,7 @@ nil ; just needed to keep customize from overwriting the top line
                    :repo "copilot-emacs/copilot.el"
                    :branch "main"
                    :files ("*.el")))
-(add-hook 'prog-mode-hook 'copilot-mode)
+;; (add-hook 'prog-mode-hook 'copilot-mode)
 
 (defun rk/no-copilot-mode ()
   "Helper for `rk/no-copilot-modes'."

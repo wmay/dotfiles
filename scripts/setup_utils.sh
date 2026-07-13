@@ -33,7 +33,7 @@ sudo apt install ${util_pkgs[*]}
 
 # following the example at
 # https://www.anishathalye.com/2014/08/03/managing-your-dotfiles/
-BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+BASEDIR="$(pwd)/dotfiles"
 ln -sf ${BASEDIR}/.hidden ~/.hidden
 ln -sf ${BASEDIR}/Templates/beamer.Rmd ~/Templates/beamer.Rmd
 ln -sf ${BASEDIR}/Templates/new.txt ~/Templates/new.txt

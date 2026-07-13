@@ -38,7 +38,7 @@ sudo update-alternatives --config liblapack.so.3-x86_64-linux-gnu
 
 # following the example at
 # https://www.anishathalye.com/2014/08/03/managing-your-dotfiles/
-BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+BASEDIR="$(pwd)/dotfiles"
 ln -sf ${BASEDIR}/.Rprofile ~/.Rprofile
 
 # R packages

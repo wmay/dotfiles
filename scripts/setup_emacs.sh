@@ -10,5 +10,5 @@ sudo apt install ${code_pkgs[*]}
 
 # following the example at
 # https://www.anishathalye.com/2014/08/03/managing-your-dotfiles/
-BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+BASEDIR="$(pwd)/dotfiles"
 ln -sf ${BASEDIR}/.emacs ~/.emacs
