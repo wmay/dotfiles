@@ -5,12 +5,4 @@ File organization under dotfiles/ mirrors the home directory.
 
 ## Installation
 
-In theory you can run these from the command line (but it's probably wiser to
-just run them piecemeal instead).
-
-```sh
-./scripts/install_system_pkgs.sh
-./.emacs # install emacs packages
-./scripts/install_R_pkgs.R
-./scripts/install_dotfiles.sh # add symlinks to home folder
-```
+Run `make help` to see the options, or browse the scripts under scripts/.
