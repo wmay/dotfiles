@@ -40,3 +40,5 @@ end
 
 # Created by `pipx` on 2026-07-11 04:48:07
 set PATH $PATH /home/will/.local/bin
+
+set -gx PATH "$HOME/.pixi/bin" $PATH

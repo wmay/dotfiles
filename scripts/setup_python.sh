@@ -19,3 +19,5 @@ BASEDIR="$(pwd)/dotfiles"
 ln -sf ${BASEDIR}/.ipython/profile_default/ipython_config.py ~/.ipython/profile_default/ipython_config.py
 ln -sf ${BASEDIR}/.ipython/profile_default/startup/startup.ipy ~/.ipython/profile_default/startup/startup.ipy
 ln -sf ${BASEDIR}/.condarc ~/.condarc
+mkdir ~/.config/pixi
+ln -sf ${BASEDIR}/.config/pixi/config.toml ~/.config/pixi/config.toml
