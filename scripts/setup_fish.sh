@@ -20,6 +20,9 @@ fish -c "omf install ${omf_pkgs[*]}"
 # https://github.com/powerline/powerline/issues/2264
 # To fix, edit /etc/fonts/conf.avail/10-powerline-symbols.conf
 
+# Also need to install the Ubuntu Sans Mono nerd fonts, and switch the terminal
+# to that font
+
 chsh -s `which fish`
 
 # following the example at
